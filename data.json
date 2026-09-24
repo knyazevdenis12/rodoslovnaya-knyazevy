@@ -1,5 +1,8 @@
 {
-  "version": "1.0",
+  "version": "1.1",
+  "meta": {
+    "lastServerSavedAt": "2026-09-24T19:58:28.403Z"
+  },
   "people": [
     {
       "id": "denis",
