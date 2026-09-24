@@ -885,15 +885,15 @@
     {
       "id": "svetlana-z",
       "firstName": "Светлана Степановна",
-      "lastName": "Захаренко",
+      "lastName": "Панина(Захаренко)",
       "birthDate": "09.09.1970",
       "birthPlace": "Новокуйбышевск",
       "gender": "female",
       "photo": "",
       "notes": "",
       "parents": [
-        "stepan",
-        "valentina"
+        "valentina",
+        "stepan"
       ],
       "spouses": [
         "vladimir"
@@ -1624,22 +1624,6 @@
       "bendY": 0
     },
     {
-      "id": "parent_stepan_svetlana-z",
-      "type": "parent",
-      "from": "stepan",
-      "to": "svetlana-z",
-      "bendX": 0,
-      "bendY": 0
-    },
-    {
-      "id": "parent_valentina_svetlana-z",
-      "type": "parent",
-      "from": "valentina",
-      "to": "svetlana-z",
-      "bendX": 0,
-      "bendY": 0
-    },
-    {
       "id": "parent_mikhail_alexander",
       "type": "parent",
       "from": "mikhail",
@@ -1830,6 +1814,22 @@
       "to": "maria",
       "bendX": 0,
       "bendY": 0
+    },
+    {
+      "id": "id_1790262493925_5758967bd24d78",
+      "type": "parent",
+      "from": "valentina",
+      "to": "svetlana-z",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "id_1790262493925_39197e9e905258",
+      "type": "parent",
+      "from": "stepan",
+      "to": "svetlana-z",
+      "bendX": 0,
+      "bendY": 0
     }
   ],
   "positions": {
@@ -1906,8 +1906,8 @@
       "y": 2200
     },
     "larisa": {
-      "x": 3030,
-      "y": 2200
+      "x": 2945.3846153846152,
+      "y": 2283.076923076923
     },
     "marina": {
       "x": 2915,
@@ -2038,8 +2038,8 @@
       "y": 3250
     },
     "vladimir": {
-      "x": 4450,
-      "y": 2200
+      "x": 4417.793147759591,
+      "y": 2410.044688524405
     },
     "viktor-p": {
       "x": 4350,
@@ -2066,8 +2066,8 @@
       "y": 2200
     },
     "svetlana-z": {
-      "x": 4700,
-      "y": 2200
+      "x": 4421.340713224289,
+      "y": 2541.6726933330324
     },
     "alexander": {
       "x": 5100,
