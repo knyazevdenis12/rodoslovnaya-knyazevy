@@ -448,46 +448,46 @@
     },
     {
       "id": "ludmila",
-      "firstName": "Людмила",
-      "lastName": "Синиусовна",
+      "firstName": "Людмила Синиусовна",
+      "lastName": "Спиридонова",
       "birthDate": "19.11.1969",
       "birthPlace": "Шигали",
       "gender": "female",
       "photo": "",
       "notes": "",
       "parents": [
-        "sinius",
-        "roza"
+        "roza",
+        "sinius"
       ],
       "spouses": []
     },
     {
       "id": "igor-s",
-      "firstName": "Игорь",
-      "lastName": "Синиусович",
+      "firstName": "Игорь Синиусович",
+      "lastName": "Спиридонов",
       "birthDate": "05.11.1972",
       "birthPlace": "Шигали",
       "gender": "male",
       "photo": "",
       "notes": "",
       "parents": [
-        "sinius",
-        "roza"
+        "roza",
+        "sinius"
       ],
       "spouses": []
     },
     {
       "id": "alyona-s",
-      "firstName": "Алёна",
-      "lastName": "Синиусовна",
+      "firstName": "Алёна Синиусовна",
+      "lastName": "Спиридонова",
       "birthDate": "11.02.1980",
       "birthPlace": "Шигали",
       "gender": "female",
       "photo": "",
       "notes": "",
       "parents": [
-        "sinius",
-        "roza"
+        "roza",
+        "sinius"
       ],
       "spouses": []
     },
@@ -1447,54 +1447,6 @@
       "bendY": 0
     },
     {
-      "id": "parent_sinius_ludmila",
-      "type": "parent",
-      "from": "sinius",
-      "to": "ludmila",
-      "bendX": 0,
-      "bendY": 0
-    },
-    {
-      "id": "parent_roza_ludmila",
-      "type": "parent",
-      "from": "roza",
-      "to": "ludmila",
-      "bendX": 0,
-      "bendY": 0
-    },
-    {
-      "id": "parent_sinius_igor-s",
-      "type": "parent",
-      "from": "sinius",
-      "to": "igor-s",
-      "bendX": 0,
-      "bendY": 0
-    },
-    {
-      "id": "parent_roza_igor-s",
-      "type": "parent",
-      "from": "roza",
-      "to": "igor-s",
-      "bendX": 0,
-      "bendY": 0
-    },
-    {
-      "id": "parent_sinius_alyona-s",
-      "type": "parent",
-      "from": "sinius",
-      "to": "alyona-s",
-      "bendX": 0,
-      "bendY": 0
-    },
-    {
-      "id": "parent_roza_alyona-s",
-      "type": "parent",
-      "from": "roza",
-      "to": "alyona-s",
-      "bendX": 0,
-      "bendY": 0
-    },
-    {
       "id": "parent_spiridon_viktor-d",
       "type": "parent",
       "from": "spiridon",
@@ -2133,6 +2085,54 @@
       "to": "id_1790264970440_7c779971be3238",
       "bendX": 0,
       "bendY": 0
+    },
+    {
+      "id": "id_1790265258158_8ec339e52c7b2",
+      "type": "parent",
+      "from": "roza",
+      "to": "igor-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "id_1790265258158_b3eab698860e68",
+      "type": "parent",
+      "from": "sinius",
+      "to": "igor-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "id_1790265271425_b1bdaa6896253",
+      "type": "parent",
+      "from": "roza",
+      "to": "ludmila",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "id_1790265271425_2916303fe8db48",
+      "type": "parent",
+      "from": "sinius",
+      "to": "ludmila",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "id_1790265283519_db9dc1d4c977a",
+      "type": "parent",
+      "from": "roza",
+      "to": "alyona-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "id_1790265283519_d253ac92cafbf",
+      "type": "parent",
+      "from": "sinius",
+      "to": "alyona-s",
+      "bendX": 0,
+      "bendY": 0
     }
   ],
   "positions": {
@@ -2397,7 +2397,7 @@
       "y": 3027.799515408182
     },
     "id_1790263805071_23865181fc0628": {
-      "x": 3512.410251658864,
+      "x": 3510.945290094011,
       "y": 3390.829151697424
     },
     "id_1790264104602_43a286f322af58": {
