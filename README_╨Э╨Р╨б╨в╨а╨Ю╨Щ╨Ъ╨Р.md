@@ -1,78 +1,35 @@
-# Родословная Князевых — GitHub + Vercel
+# Родословная Князевых — GitHub Pages + Vercel
 
-## Что где лежит
+## ВАЖНО: vercel.json больше НЕ НУЖЕН
 
-- `index.html` — сайт. Загрузить в репозиторий GitHub вместо старого `index.html`.
-- `api/tree.js` — серверная функция Vercel. Она читает и записывает `data.json` через GitHub API.
-- `vercel.json` — настройки Vercel.
-- `data.json` — файл с данными родословной. Его можно создать в GitHub вручную или дать функции создать при первом сохранении.
+Не загружайте старый `vercel.json`. Vercel автоматически определяет Node.js runtime для `api/tree.js`. Старый файл с `"runtime": "nodejs22.x"` вызывал ошибку `Function Runtimes must have a valid version`.
 
-## 1. GitHub
+## Структура репозитория
 
-Создайте репозиторий, например `rodoslovnaya-knyazevy`.
+```text
+index.html
+data.json
+api/tree.js
+```
 
-В корень репозитория загрузите:
+## Переменные окружения Vercel
 
-- `index.html`
-- папку `api/` с файлом `tree.js`
-- `vercel.json`
-- `data.json` (рекомендуется)
+Создайте в Vercel → Project → Settings → Environment Variables:
 
-Для GitHub Pages сайт должен иметь `index.html` в источнике публикации.
+- `GITHUB_TOKEN` — Fine-grained GitHub token с `Contents: Read and write` для нужного репозитория.
+- `GITHUB_OWNER` — ваш логин GitHub.
+- `GITHUB_REPO` — имя репозитория.
+- `GITHUB_BRANCH` — обычно `main`.
+- `DATA_PATH` — `data.json`.
+- `ADMIN_PASSWORD` — ваш пароль для сохранения.
+- `ALLOWED_ORIGIN` — домен GitHub Pages, например `https://ВАШ_ЛОГИН.github.io` (для первого теста можно временно поставить `*`).
 
-## 2. GitHub token
+После добавления переменных сделайте Redeploy.
 
-GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token.
+## API
 
-Выберите:
+Функция находится в `api/tree.js` и доступна по адресу:
 
-- Repository access → Only select repositories → ваш репозиторий
-- Repository permissions → Contents → Read and write
+`https://ВАШ-ПРОЕКТ.vercel.app/api/tree`
 
-Создайте токен и скопируйте его. В HTML токен НЕ вставлять.
-
-## 3. Vercel
-
-Импортируйте этот GitHub-репозиторий в Vercel.
-
-В Vercel → Project → Settings → Environment Variables создайте:
-
-- `GITHUB_TOKEN` = ваш GitHub token
-- `GITHUB_OWNER` = ваш логин GitHub
-- `GITHUB_REPO` = имя репозитория
-- `GITHUB_BRANCH` = `main`
-- `ADMIN_PASSWORD` = придуманный пароль для кнопки «Сохранить»
-- `DATA_PATH` = `data.json`
-- `ALLOWED_ORIGIN` = адрес GitHub Pages, например `https://ВАШЛОГИН.github.io` или `*` на этапе проверки
-
-После этого сделайте Redeploy.
-
-## 4. Подключите HTML к Vercel
-
-Откройте `index.html` и найдите:
-
-`const API_URL="https://YOUR-VERCEL-PROJECT.vercel.app/api/tree";`
-
-Замените на адрес вашей функции Vercel, например:
-
-`const API_URL="https://rodoslovnaya-api.vercel.app/api/tree";`
-
-Снова загрузите `index.html` в GitHub.
-
-## 5. GitHub Pages
-
-В репозитории откройте Settings → Pages.
-
-Выберите Deploy from a branch → `main` → `/ (root)` → Save.
-
-После публикации сайт будет доступен по адресу вида:
-
-`https://ВАШЛОГИН.github.io/ИМЯ-РЕПОЗИТОРИЯ/`
-
-## Важно
-
-GitHub Pages сам по себе не умеет выполнять PHP/Python/Node на сервере. Поэтому запись в `data.json` выполняет Vercel-функция, а GitHub API делает коммит файла.
-
-GitHub token хранится только в Vercel Environment Variables и не попадает в браузер.
-
-Если репозиторий публичный, `data.json` тоже будет доступен публично. Для семейных данных лучше держать данные в отдельном приватном репозитории и дать токену доступ только к нему.
+В `index.html` замените `API_URL` на этот адрес.
