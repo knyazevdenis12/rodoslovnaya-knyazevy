@@ -1,0 +1,2097 @@
+{
+  "version": "1.0",
+  "people": [
+    {
+      "id": "denis",
+      "firstName": "Денис",
+      "lastName": "Игоревич Князев",
+      "birthDate": "31.10.1988",
+      "birthPlace": "Новокуйбышевск",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "igor",
+        "olga"
+      ],
+      "spouses": [
+        "alyona"
+      ]
+    },
+    {
+      "id": "alyona",
+      "firstName": "Алёна",
+      "lastName": "Владимировна Князева (Панина)",
+      "birthDate": "02.08.1990",
+      "birthPlace": "Новокуйбышевск",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "vladimir",
+        "svetlana-z"
+      ],
+      "spouses": [
+        "denis"
+      ]
+    },
+    {
+      "id": "daniel",
+      "firstName": "Даниил",
+      "lastName": "Денисович Князев",
+      "birthDate": "26.07.2013",
+      "birthPlace": "Новокуйбышевск",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "denis",
+        "alyona"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "valeria",
+      "firstName": "Валерия",
+      "lastName": "Денисовна Князева",
+      "birthDate": "17.12.2017",
+      "birthPlace": "Новокуйбышевск",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "denis",
+        "alyona"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "igor",
+      "firstName": "Игорь",
+      "lastName": "Анатольевич Князев",
+      "birthDate": "17.10.1963",
+      "birthPlace": "Мордвес, Тульская область",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "anatoly",
+        "magdalina"
+      ],
+      "spouses": [
+        "olga"
+      ]
+    },
+    {
+      "id": "olga",
+      "firstName": "Ольга",
+      "lastName": "Рюриковна Князева (Лохова)",
+      "birthDate": "21.07.1964",
+      "birthPlace": "Малиновка, Плесецкий район, Архангельская область",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "rurik",
+        "svetlana-l"
+      ],
+      "spouses": [
+        "igor"
+      ]
+    },
+    {
+      "id": "anatoly",
+      "firstName": "Анатолий",
+      "lastName": "Князев",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "magdalina"
+      ]
+    },
+    {
+      "id": "magdalina",
+      "firstName": "Магдалина Спиридоновна",
+      "lastName": "Спиридонова (Князева)",
+      "birthDate": "07.08.1945",
+      "birthPlace": "д. Шигали, Канашский район, Чувашская Республика",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "spiridon",
+        "matrena"
+      ],
+      "spouses": [
+        "anatoly",
+        "vladimir-s"
+      ]
+    },
+    {
+      "id": "vladimir-s",
+      "firstName": "Владимир Иванович",
+      "lastName": "Секуняев",
+      "birthDate": "15.02.1940",
+      "birthPlace": "Новый Шунгут, Исаклинский район, Куйбышевская область",
+      "gender": "male",
+      "photo": "",
+      "notes": "Второй муж Магдалины, брак 1971.",
+      "parents": [],
+      "spouses": [
+        "magdalina"
+      ]
+    },
+    {
+      "id": "oksana",
+      "firstName": "Оксана Владимировна",
+      "lastName": "Князева",
+      "birthDate": "09.08.1971",
+      "birthPlace": "Новокуйбышевск",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "magdalina",
+        "vladimir-s"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "rurik",
+      "firstName": "Лохов Рюрик",
+      "lastName": "Николаевич",
+      "birthDate": "09.09.1934",
+      "birthPlace": "Малиновка, Плесецкий район",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "nikolai",
+        "klavdia"
+      ],
+      "spouses": [
+        "svetlana-l"
+      ]
+    },
+    {
+      "id": "svetlana-l",
+      "firstName": "Кириллова Светлана",
+      "lastName": "Егоровна",
+      "birthDate": "28.11.1941",
+      "birthPlace": "Самодед, Плесецкий район",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "egor",
+        "efimia"
+      ],
+      "spouses": [
+        "rurik"
+      ]
+    },
+    {
+      "id": "nikolai",
+      "firstName": "Лохов Николай",
+      "lastName": "Васильевич",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "klavdia"
+      ]
+    },
+    {
+      "id": "klavdia",
+      "firstName": "Клавдия",
+      "lastName": "Лохова",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "nikolai"
+      ]
+    },
+    {
+      "id": "egor",
+      "firstName": "Кириллов Егор",
+      "lastName": "Иванович",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "efimia"
+      ]
+    },
+    {
+      "id": "efimia",
+      "firstName": "Морева Ефимья",
+      "lastName": "Абрамовна",
+      "birthDate": "16.07.1903",
+      "birthPlace": "Моржегорский сельсовет, Виноградовский район, Архангельская область",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "egor"
+      ]
+    },
+    {
+      "id": "evgeny-k",
+      "firstName": "Кириллов Евгений",
+      "lastName": "Егорович",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "egor",
+        "efimia"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "evgeny-l",
+      "firstName": "Лохов Евгений",
+      "lastName": "Рюрикович",
+      "birthDate": "02.03.1961",
+      "birthPlace": "Малиновка",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "rurik",
+        "svetlana-l"
+      ],
+      "spouses": [
+        "larisa"
+      ]
+    },
+    {
+      "id": "larisa",
+      "firstName": "Лариса",
+      "lastName": "Витальевна",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "evgeny-l"
+      ]
+    },
+    {
+      "id": "marina",
+      "firstName": "Лохова Марина",
+      "lastName": "Евгеньевна",
+      "birthDate": "09.05.1983",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "evgeny-l",
+        "larisa"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "arkady",
+      "firstName": "Лохов Аркадий",
+      "lastName": "Рюрикович",
+      "birthDate": "04.04.1967",
+      "birthPlace": "Малиновка",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "rurik",
+        "svetlana-l"
+      ],
+      "spouses": [
+        "elena"
+      ]
+    },
+    {
+      "id": "elena",
+      "firstName": "Елена",
+      "lastName": "",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "arkady"
+      ]
+    },
+    {
+      "id": "pavel",
+      "firstName": "Лохов Павел",
+      "lastName": "Аркадьевич",
+      "birthDate": "14.03.1991",
+      "birthPlace": "Северодвинск",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "arkady",
+        "elena"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "svetlana-a",
+      "firstName": "Лохова Светлана",
+      "lastName": "Аркадьевна",
+      "birthDate": "02.01.1993",
+      "birthPlace": "Северодвинск",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "arkady",
+        "elena"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "ilya",
+      "firstName": "Лохов Илья",
+      "lastName": "Рюрикович",
+      "birthDate": "01.04.1973",
+      "birthPlace": "Малиновка",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "rurik",
+        "svetlana-l"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "spiridon",
+      "firstName": "Данилов Спиридон",
+      "lastName": "Данилович",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "matrena"
+      ]
+    },
+    {
+      "id": "matrena",
+      "firstName": "Федорова Матрёна",
+      "lastName": "Федоровна",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "spiridon"
+      ]
+    },
+    {
+      "id": "sinius",
+      "firstName": "Спиридонов Синиус",
+      "lastName": "Спиридонович",
+      "birthDate": "02.01.1948",
+      "birthPlace": "Шигали",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "spiridon",
+        "matrena"
+      ],
+      "spouses": [
+        "roza"
+      ]
+    },
+    {
+      "id": "roza",
+      "firstName": "Мишуткина Роза",
+      "lastName": "Васильевна",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "sinius"
+      ]
+    },
+    {
+      "id": "ludmila",
+      "firstName": "Людмила",
+      "lastName": "Синиусовна",
+      "birthDate": "19.11.1969",
+      "birthPlace": "Шигали",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "sinius",
+        "roza"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "igor-s",
+      "firstName": "Игорь",
+      "lastName": "Синиусович",
+      "birthDate": "05.11.1972",
+      "birthPlace": "Шигали",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "sinius",
+        "roza"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "alyona-s",
+      "firstName": "Алёна",
+      "lastName": "Синиусовна",
+      "birthDate": "11.02.1980",
+      "birthPlace": "Шигали",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "sinius",
+        "roza"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "viktor-d",
+      "firstName": "Спиридонов Виктор",
+      "lastName": "Данилович",
+      "birthDate": "1924",
+      "birthPlace": "Шигали",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "spiridon",
+        "matrena"
+      ],
+      "spouses": [
+        "anastasia"
+      ]
+    },
+    {
+      "id": "anastasia",
+      "firstName": "Анастасия",
+      "lastName": "",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "viktor-d"
+      ]
+    },
+    {
+      "id": "vladimir-v",
+      "firstName": "Владимир",
+      "lastName": "Викторович",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "viktor-d",
+        "anastasia"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "nikolai-v",
+      "firstName": "Николай",
+      "lastName": "Викторович",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "viktor-d",
+        "anastasia"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "taisya",
+      "firstName": "Спиридонова Таисия",
+      "lastName": "Даниловна",
+      "birthDate": "",
+      "birthPlace": "Шигали",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "spiridon",
+        "matrena"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "sergey-i",
+      "firstName": "Спиридонов Сергей",
+      "lastName": "Иванович",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "male",
+      "photo": "",
+      "notes": "Тольятти указан как место проживания.",
+      "parents": [
+        "taisya"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "svetlana-d",
+      "firstName": "Спиридонова Светлана",
+      "lastName": "Даниловна",
+      "birthDate": "",
+      "birthPlace": "Шигали",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "spiridon",
+        "matrena"
+      ],
+      "spouses": [
+        "nuria"
+      ]
+    },
+    {
+      "id": "galya",
+      "firstName": "Галя",
+      "lastName": "",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "Дочь Светланы Даниловны от первого брака.",
+      "parents": [
+        "svetlana-d"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "nuria",
+      "firstName": "Сафин Нуриахмет",
+      "lastName": "",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "svetlana-d"
+      ]
+    },
+    {
+      "id": "lida-s",
+      "firstName": "Лида",
+      "lastName": "Нуриахметовна Сафина",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "svetlana-d",
+        "nuria"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "vera-s",
+      "firstName": "Вера",
+      "lastName": "Нуриахметовна Сафина",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "svetlana-d",
+        "nuria"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "yuri-s",
+      "firstName": "Юрий",
+      "lastName": "Нуриахметович Сафин",
+      "birthDate": "20.01.1973",
+      "birthPlace": "",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "svetlana-d",
+        "nuria"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "andrey-s",
+      "firstName": "Андрей",
+      "lastName": "Нуриахметович Сафин",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "svetlana-d",
+        "nuria"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "tatiana-s",
+      "firstName": "Татьяна",
+      "lastName": "Нуриахметовна Сафина",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "svetlana-d",
+        "nuria"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "natalia-s",
+      "firstName": "Наталья",
+      "lastName": "Нуриахметовна Сафина",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "svetlana-d",
+        "nuria"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "oksana-s",
+      "firstName": "Оксана",
+      "lastName": "Нуриахметовна Сафина",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "svetlana-d",
+        "nuria"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "lidia-d",
+      "firstName": "Спиридонова Лидия",
+      "lastName": "Даниловна",
+      "birthDate": "",
+      "birthPlace": "Шигали",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "spiridon",
+        "matrena"
+      ],
+      "spouses": [
+        "zemskov"
+      ]
+    },
+    {
+      "id": "zemskov",
+      "firstName": "Сергей",
+      "lastName": "Земсков",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "lidia-d"
+      ]
+    },
+    {
+      "id": "katya-z",
+      "firstName": "Катя Сергеевна",
+      "lastName": "Земскова",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "lidia-d",
+        "zemskov"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "vladimir",
+      "firstName": "Панин Владимир",
+      "lastName": "Викторович",
+      "birthDate": "1967",
+      "birthPlace": "Новокуйбышевск",
+      "gender": "male",
+      "photo": "",
+      "notes": "Исходная запись: 31.06.1967 — дата требует уточнения.",
+      "parents": [
+        "viktor-p",
+        "nina"
+      ],
+      "spouses": [
+        "svetlana-z"
+      ]
+    },
+    {
+      "id": "viktor-p",
+      "firstName": "Виктор",
+      "lastName": "Панин",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "nina"
+      ]
+    },
+    {
+      "id": "nina",
+      "firstName": "Нина Николаевна",
+      "lastName": "Зюзина (Панина)",
+      "birthDate": "23.01.1940",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "Отец неизвестен.",
+      "parents": [
+        "arina"
+      ],
+      "spouses": [
+        "viktor-p"
+      ]
+    },
+    {
+      "id": "arina",
+      "firstName": "Арина",
+      "lastName": "Зюзина",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": []
+    },
+    {
+      "id": "stepan",
+      "firstName": "Степан Леонович",
+      "lastName": "Захаренко",
+      "birthDate": "10.01.1934",
+      "birthPlace": "Беларусь, село Ушачи",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "valentina"
+      ]
+    },
+    {
+      "id": "valentina",
+      "firstName": "Валентина Александровна",
+      "lastName": "Калинина (Захаренко)",
+      "birthDate": "05.06.1936",
+      "birthPlace": "Пенза",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "alexander",
+        "afinia"
+      ],
+      "spouses": [
+        "stepan"
+      ]
+    },
+    {
+      "id": "irina-z",
+      "firstName": "Ирина Степановна",
+      "lastName": "Захаренко",
+      "birthDate": "23.05.1959",
+      "birthPlace": "Новокуйбышевск",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "stepan",
+        "valentina"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "svetlana-z",
+      "firstName": "Светлана Степановна",
+      "lastName": "Захаренко",
+      "birthDate": "09.09.1970",
+      "birthPlace": "Новокуйбышевск",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "stepan",
+        "valentina"
+      ],
+      "spouses": [
+        "vladimir"
+      ]
+    },
+    {
+      "id": "alexander",
+      "firstName": "Александр Михайлович",
+      "lastName": "Калинин",
+      "birthDate": "12.12.1912",
+      "birthPlace": "",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "mikhail",
+        "tatiana"
+      ],
+      "spouses": [
+        "afinia"
+      ]
+    },
+    {
+      "id": "afinia",
+      "firstName": "Афиния Алексеевна",
+      "lastName": "Калинина (Ситникова)",
+      "birthDate": "12.09.1913",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [
+        "alexey",
+        "maria"
+      ],
+      "spouses": [
+        "alexander"
+      ]
+    },
+    {
+      "id": "mikhail",
+      "firstName": "Михаил Романович",
+      "lastName": "Калинин",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "tatiana"
+      ]
+    },
+    {
+      "id": "tatiana",
+      "firstName": "Татьяна Макеевна",
+      "lastName": "Калинина",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "mikhail"
+      ]
+    },
+    {
+      "id": "alexey",
+      "firstName": "Алексей Пантелеевич",
+      "lastName": "Ситников",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "male",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "maria"
+      ]
+    },
+    {
+      "id": "maria",
+      "firstName": "Мария",
+      "lastName": "Ситникова",
+      "birthDate": "",
+      "birthPlace": "",
+      "gender": "female",
+      "photo": "",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "alexey"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "parent_igor_denis",
+      "type": "parent",
+      "from": "igor",
+      "to": "denis",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_olga_denis",
+      "type": "parent",
+      "from": "olga",
+      "to": "denis",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_vladimir_alyona",
+      "type": "parent",
+      "from": "vladimir",
+      "to": "alyona",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_svetlana-z_alyona",
+      "type": "parent",
+      "from": "svetlana-z",
+      "to": "alyona",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_denis_daniel",
+      "type": "parent",
+      "from": "denis",
+      "to": "daniel",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_alyona_daniel",
+      "type": "parent",
+      "from": "alyona",
+      "to": "daniel",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_denis_valeria",
+      "type": "parent",
+      "from": "denis",
+      "to": "valeria",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_alyona_valeria",
+      "type": "parent",
+      "from": "alyona",
+      "to": "valeria",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_anatoly_igor",
+      "type": "parent",
+      "from": "anatoly",
+      "to": "igor",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_magdalina_igor",
+      "type": "parent",
+      "from": "magdalina",
+      "to": "igor",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_rurik_olga",
+      "type": "parent",
+      "from": "rurik",
+      "to": "olga",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_svetlana-l_olga",
+      "type": "parent",
+      "from": "svetlana-l",
+      "to": "olga",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_spiridon_magdalina",
+      "type": "parent",
+      "from": "spiridon",
+      "to": "magdalina",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_matrena_magdalina",
+      "type": "parent",
+      "from": "matrena",
+      "to": "magdalina",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_magdalina_oksana",
+      "type": "parent",
+      "from": "magdalina",
+      "to": "oksana",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_vladimir-s_oksana",
+      "type": "parent",
+      "from": "vladimir-s",
+      "to": "oksana",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_nikolai_rurik",
+      "type": "parent",
+      "from": "nikolai",
+      "to": "rurik",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_klavdia_rurik",
+      "type": "parent",
+      "from": "klavdia",
+      "to": "rurik",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_egor_svetlana-l",
+      "type": "parent",
+      "from": "egor",
+      "to": "svetlana-l",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_efimia_svetlana-l",
+      "type": "parent",
+      "from": "efimia",
+      "to": "svetlana-l",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_egor_evgeny-k",
+      "type": "parent",
+      "from": "egor",
+      "to": "evgeny-k",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_efimia_evgeny-k",
+      "type": "parent",
+      "from": "efimia",
+      "to": "evgeny-k",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_rurik_evgeny-l",
+      "type": "parent",
+      "from": "rurik",
+      "to": "evgeny-l",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_svetlana-l_evgeny-l",
+      "type": "parent",
+      "from": "svetlana-l",
+      "to": "evgeny-l",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_evgeny-l_marina",
+      "type": "parent",
+      "from": "evgeny-l",
+      "to": "marina",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_larisa_marina",
+      "type": "parent",
+      "from": "larisa",
+      "to": "marina",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_rurik_arkady",
+      "type": "parent",
+      "from": "rurik",
+      "to": "arkady",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_svetlana-l_arkady",
+      "type": "parent",
+      "from": "svetlana-l",
+      "to": "arkady",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_arkady_pavel",
+      "type": "parent",
+      "from": "arkady",
+      "to": "pavel",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_elena_pavel",
+      "type": "parent",
+      "from": "elena",
+      "to": "pavel",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_arkady_svetlana-a",
+      "type": "parent",
+      "from": "arkady",
+      "to": "svetlana-a",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_elena_svetlana-a",
+      "type": "parent",
+      "from": "elena",
+      "to": "svetlana-a",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_rurik_ilya",
+      "type": "parent",
+      "from": "rurik",
+      "to": "ilya",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_svetlana-l_ilya",
+      "type": "parent",
+      "from": "svetlana-l",
+      "to": "ilya",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_spiridon_sinius",
+      "type": "parent",
+      "from": "spiridon",
+      "to": "sinius",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_matrena_sinius",
+      "type": "parent",
+      "from": "matrena",
+      "to": "sinius",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_sinius_ludmila",
+      "type": "parent",
+      "from": "sinius",
+      "to": "ludmila",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_roza_ludmila",
+      "type": "parent",
+      "from": "roza",
+      "to": "ludmila",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_sinius_igor-s",
+      "type": "parent",
+      "from": "sinius",
+      "to": "igor-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_roza_igor-s",
+      "type": "parent",
+      "from": "roza",
+      "to": "igor-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_sinius_alyona-s",
+      "type": "parent",
+      "from": "sinius",
+      "to": "alyona-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_roza_alyona-s",
+      "type": "parent",
+      "from": "roza",
+      "to": "alyona-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_spiridon_viktor-d",
+      "type": "parent",
+      "from": "spiridon",
+      "to": "viktor-d",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_matrena_viktor-d",
+      "type": "parent",
+      "from": "matrena",
+      "to": "viktor-d",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_viktor-d_vladimir-v",
+      "type": "parent",
+      "from": "viktor-d",
+      "to": "vladimir-v",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_anastasia_vladimir-v",
+      "type": "parent",
+      "from": "anastasia",
+      "to": "vladimir-v",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_viktor-d_nikolai-v",
+      "type": "parent",
+      "from": "viktor-d",
+      "to": "nikolai-v",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_anastasia_nikolai-v",
+      "type": "parent",
+      "from": "anastasia",
+      "to": "nikolai-v",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_spiridon_taisya",
+      "type": "parent",
+      "from": "spiridon",
+      "to": "taisya",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_matrena_taisya",
+      "type": "parent",
+      "from": "matrena",
+      "to": "taisya",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_taisya_sergey-i",
+      "type": "parent",
+      "from": "taisya",
+      "to": "sergey-i",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_spiridon_svetlana-d",
+      "type": "parent",
+      "from": "spiridon",
+      "to": "svetlana-d",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_matrena_svetlana-d",
+      "type": "parent",
+      "from": "matrena",
+      "to": "svetlana-d",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_svetlana-d_galya",
+      "type": "parent",
+      "from": "svetlana-d",
+      "to": "galya",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_svetlana-d_lida-s",
+      "type": "parent",
+      "from": "svetlana-d",
+      "to": "lida-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_nuria_lida-s",
+      "type": "parent",
+      "from": "nuria",
+      "to": "lida-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_svetlana-d_vera-s",
+      "type": "parent",
+      "from": "svetlana-d",
+      "to": "vera-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_nuria_vera-s",
+      "type": "parent",
+      "from": "nuria",
+      "to": "vera-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_svetlana-d_yuri-s",
+      "type": "parent",
+      "from": "svetlana-d",
+      "to": "yuri-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_nuria_yuri-s",
+      "type": "parent",
+      "from": "nuria",
+      "to": "yuri-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_svetlana-d_andrey-s",
+      "type": "parent",
+      "from": "svetlana-d",
+      "to": "andrey-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_nuria_andrey-s",
+      "type": "parent",
+      "from": "nuria",
+      "to": "andrey-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_svetlana-d_tatiana-s",
+      "type": "parent",
+      "from": "svetlana-d",
+      "to": "tatiana-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_nuria_tatiana-s",
+      "type": "parent",
+      "from": "nuria",
+      "to": "tatiana-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_svetlana-d_natalia-s",
+      "type": "parent",
+      "from": "svetlana-d",
+      "to": "natalia-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_nuria_natalia-s",
+      "type": "parent",
+      "from": "nuria",
+      "to": "natalia-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_svetlana-d_oksana-s",
+      "type": "parent",
+      "from": "svetlana-d",
+      "to": "oksana-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_nuria_oksana-s",
+      "type": "parent",
+      "from": "nuria",
+      "to": "oksana-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_spiridon_lidia-d",
+      "type": "parent",
+      "from": "spiridon",
+      "to": "lidia-d",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_matrena_lidia-d",
+      "type": "parent",
+      "from": "matrena",
+      "to": "lidia-d",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_lidia-d_katya-z",
+      "type": "parent",
+      "from": "lidia-d",
+      "to": "katya-z",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_zemskov_katya-z",
+      "type": "parent",
+      "from": "zemskov",
+      "to": "katya-z",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_viktor-p_vladimir",
+      "type": "parent",
+      "from": "viktor-p",
+      "to": "vladimir",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_nina_vladimir",
+      "type": "parent",
+      "from": "nina",
+      "to": "vladimir",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_arina_nina",
+      "type": "parent",
+      "from": "arina",
+      "to": "nina",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_alexander_valentina",
+      "type": "parent",
+      "from": "alexander",
+      "to": "valentina",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_afinia_valentina",
+      "type": "parent",
+      "from": "afinia",
+      "to": "valentina",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_stepan_irina-z",
+      "type": "parent",
+      "from": "stepan",
+      "to": "irina-z",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_valentina_irina-z",
+      "type": "parent",
+      "from": "valentina",
+      "to": "irina-z",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_stepan_svetlana-z",
+      "type": "parent",
+      "from": "stepan",
+      "to": "svetlana-z",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_valentina_svetlana-z",
+      "type": "parent",
+      "from": "valentina",
+      "to": "svetlana-z",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_mikhail_alexander",
+      "type": "parent",
+      "from": "mikhail",
+      "to": "alexander",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_tatiana_alexander",
+      "type": "parent",
+      "from": "tatiana",
+      "to": "alexander",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_alexey_afinia",
+      "type": "parent",
+      "from": "alexey",
+      "to": "afinia",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "parent_maria_afinia",
+      "type": "parent",
+      "from": "maria",
+      "to": "afinia",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_alyona_denis",
+      "type": "spouse",
+      "from": "denis",
+      "to": "alyona",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_igor_olga",
+      "type": "spouse",
+      "from": "igor",
+      "to": "olga",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_anatoly_magdalina",
+      "type": "spouse",
+      "from": "anatoly",
+      "to": "magdalina",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_magdalina_vladimir-s",
+      "type": "spouse",
+      "from": "magdalina",
+      "to": "vladimir-s",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_rurik_svetlana-l",
+      "type": "spouse",
+      "from": "rurik",
+      "to": "svetlana-l",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_klavdia_nikolai",
+      "type": "spouse",
+      "from": "nikolai",
+      "to": "klavdia",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_efimia_egor",
+      "type": "spouse",
+      "from": "egor",
+      "to": "efimia",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_evgeny-l_larisa",
+      "type": "spouse",
+      "from": "evgeny-l",
+      "to": "larisa",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_arkady_elena",
+      "type": "spouse",
+      "from": "arkady",
+      "to": "elena",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_matrena_spiridon",
+      "type": "spouse",
+      "from": "spiridon",
+      "to": "matrena",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_roza_sinius",
+      "type": "spouse",
+      "from": "sinius",
+      "to": "roza",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_anastasia_viktor-d",
+      "type": "spouse",
+      "from": "viktor-d",
+      "to": "anastasia",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_nuria_svetlana-d",
+      "type": "spouse",
+      "from": "svetlana-d",
+      "to": "nuria",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_lidia-d_zemskov",
+      "type": "spouse",
+      "from": "lidia-d",
+      "to": "zemskov",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_svetlana-z_vladimir",
+      "type": "spouse",
+      "from": "vladimir",
+      "to": "svetlana-z",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_nina_viktor-p",
+      "type": "spouse",
+      "from": "viktor-p",
+      "to": "nina",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_stepan_valentina",
+      "type": "spouse",
+      "from": "stepan",
+      "to": "valentina",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_afinia_alexander",
+      "type": "spouse",
+      "from": "alexander",
+      "to": "afinia",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_mikhail_tatiana",
+      "type": "spouse",
+      "from": "mikhail",
+      "to": "tatiana",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "spouse_alexey_maria",
+      "type": "spouse",
+      "from": "alexey",
+      "to": "maria",
+      "bendX": 0,
+      "bendY": 0
+    }
+  ],
+  "positions": {
+    "denis": {
+      "x": 3900,
+      "y": 2500
+    },
+    "alyona": {
+      "x": 4150,
+      "y": 2500
+    },
+    "daniel": {
+      "x": 3900,
+      "y": 2750
+    },
+    "valeria": {
+      "x": 4150,
+      "y": 2750
+    },
+    "igor": {
+      "x": 3400,
+      "y": 2200
+    },
+    "olga": {
+      "x": 3650,
+      "y": 2200
+    },
+    "anatoly": {
+      "x": 2800,
+      "y": 1850
+    },
+    "magdalina": {
+      "x": 3050,
+      "y": 1850
+    },
+    "vladimir-s": {
+      "x": 3300,
+      "y": 1850
+    },
+    "oksana": {
+      "x": 3175,
+      "y": 2200
+    },
+    "rurik": {
+      "x": 3400,
+      "y": 1500
+    },
+    "svetlana-l": {
+      "x": 3650,
+      "y": 1500
+    },
+    "nikolai": {
+      "x": 3150,
+      "y": 1150
+    },
+    "klavdia": {
+      "x": 3380,
+      "y": 1150
+    },
+    "egor": {
+      "x": 3620,
+      "y": 1150
+    },
+    "efimia": {
+      "x": 3850,
+      "y": 1150
+    },
+    "evgeny-k": {
+      "x": 4080,
+      "y": 1500
+    },
+    "evgeny-l": {
+      "x": 2800,
+      "y": 2200
+    },
+    "larisa": {
+      "x": 3030,
+      "y": 2200
+    },
+    "marina": {
+      "x": 2915,
+      "y": 2550
+    },
+    "arkady": {
+      "x": 2350,
+      "y": 2200
+    },
+    "elena": {
+      "x": 2580,
+      "y": 2200
+    },
+    "pavel": {
+      "x": 2350,
+      "y": 2550
+    },
+    "svetlana-a": {
+      "x": 2580,
+      "y": 2550
+    },
+    "ilya": {
+      "x": 2050,
+      "y": 2200
+    },
+    "spiridon": {
+      "x": 2350,
+      "y": 1500
+    },
+    "matrena": {
+      "x": 2600,
+      "y": 1500
+    },
+    "sinius": {
+      "x": 1900,
+      "y": 1850
+    },
+    "roza": {
+      "x": 2130,
+      "y": 1850
+    },
+    "ludmila": {
+      "x": 1750,
+      "y": 2200
+    },
+    "igor-s": {
+      "x": 1980,
+      "y": 2200
+    },
+    "alyona-s": {
+      "x": 2210,
+      "y": 2200
+    },
+    "viktor-d": {
+      "x": 1450,
+      "y": 1850
+    },
+    "anastasia": {
+      "x": 1680,
+      "y": 1850
+    },
+    "vladimir-v": {
+      "x": 1400,
+      "y": 2200
+    },
+    "nikolai-v": {
+      "x": 1630,
+      "y": 2200
+    },
+    "taisya": {
+      "x": 1000,
+      "y": 1850
+    },
+    "sergey-i": {
+      "x": 1000,
+      "y": 2250
+    },
+    "svetlana-d": {
+      "x": 700,
+      "y": 2200
+    },
+    "galya": {
+      "x": 480,
+      "y": 2550
+    },
+    "nuria": {
+      "x": 930,
+      "y": 2200
+    },
+    "lida-s": {
+      "x": 600,
+      "y": 2550
+    },
+    "vera-s": {
+      "x": 830,
+      "y": 2550
+    },
+    "yuri-s": {
+      "x": 1060,
+      "y": 2550
+    },
+    "andrey-s": {
+      "x": 1290,
+      "y": 2550
+    },
+    "tatiana-s": {
+      "x": 1520,
+      "y": 2550
+    },
+    "natalia-s": {
+      "x": 1750,
+      "y": 2550
+    },
+    "oksana-s": {
+      "x": 1980,
+      "y": 2550
+    },
+    "lidia-d": {
+      "x": 700,
+      "y": 2900
+    },
+    "zemskov": {
+      "x": 930,
+      "y": 2900
+    },
+    "katya-z": {
+      "x": 815,
+      "y": 3250
+    },
+    "vladimir": {
+      "x": 4450,
+      "y": 2200
+    },
+    "viktor-p": {
+      "x": 4350,
+      "y": 1850
+    },
+    "nina": {
+      "x": 4580,
+      "y": 1850
+    },
+    "arina": {
+      "x": 4580,
+      "y": 1500
+    },
+    "stepan": {
+      "x": 4900,
+      "y": 1850
+    },
+    "valentina": {
+      "x": 5130,
+      "y": 1850
+    },
+    "irina-z": {
+      "x": 5360,
+      "y": 2200
+    },
+    "svetlana-z": {
+      "x": 4700,
+      "y": 2200
+    },
+    "alexander": {
+      "x": 5100,
+      "y": 1500
+    },
+    "afinia": {
+      "x": 5330,
+      "y": 1500
+    },
+    "mikhail": {
+      "x": 5000,
+      "y": 1150
+    },
+    "tatiana": {
+      "x": 5230,
+      "y": 1150
+    },
+    "alexey": {
+      "x": 5450,
+      "y": 1150
+    },
+    "maria": {
+      "x": 5680,
+      "y": 1150
+    }
+  }
+}
