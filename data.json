@@ -988,18 +988,6 @@
       "spouses": [
         "alexey"
       ]
-    },
-    {
-      "id": "id_1790262339532_a441e6a33052f8",
-      "firstName": "ахалай",
-      "lastName": "махалай",
-      "birthDate": "",
-      "birthPlace": "",
-      "gender": "male",
-      "photo": "",
-      "notes": "",
-      "parents": [],
-      "spouses": []
     }
   ],
   "connections": [
@@ -2104,10 +2092,6 @@
     "maria": {
       "x": 5680,
       "y": 1150
-    },
-    "id_1790262339532_a441e6a33052f8": {
-      "x": 3427.459727860296,
-      "y": 2547.7026494539778
     }
   }
 }
