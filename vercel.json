@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "api/tree.js": {
-      "runtime": "nodejs22.x"
-    }
-  }
-}
