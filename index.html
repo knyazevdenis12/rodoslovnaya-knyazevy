@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Родословная Князевых</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:Arial,Helvetica,sans-serif;background:#0b1220;color:#e5e7eb}
+body{display:flex;flex-direction:column;height:100vh;height:100dvh}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.topbar{min-height:64px;flex:0 0 auto;flex-wrap:wrap;background:#172033;border-bottom:1px solid #334155;display:flex;align-items:center;gap:8px;padding:8px 12px;position:relative;z-index:100}
+.logo{font-weight:800;font-size:18px;white-space:nowrap;margin-right:6px}
+.topbar button{border:1px solid #475569;background:#243044;color:#fff;padding:8px 11px;border-radius:9px}
+.topbar button:hover{background:#334155}
+.topbar .primary{background:#2563eb;border-color:#3b82f6}
+.topbar .save{background:#15803d;border-color:#22c55e}
+.topbar .server-load{background:#7c3aed;border-color:#a78bfa;color:#fff;font-weight:700}
+.topbar .server-load:hover{background:#8b5cf6}
+.topbar .server-load:disabled{opacity:.65;cursor:wait}
+.search{width:210px;background:#0f172a;color:#fff;border:1px solid #475569;border-radius:9px;padding:8px 10px;outline:0}
+.stats{margin-left:auto;color:#94a3b8;font-size:12px;white-space:nowrap}
+.sync-status{font-size:12px;white-space:nowrap;padding:7px 10px;border-radius:9px;border:1px solid #475569;background:#243044;color:#cbd5e1}.sync-status.ok{border-color:#166534;color:#86efac;background:#052e16}.sync-status.dirty{border-color:#b45309;color:#fbbf24;background:#451a03}.sync-status.error{border-color:#991b1b;color:#fca5a5;background:#450a0a}
+.workspace{position:relative;flex:1 1 auto;min-height:0;overflow:hidden}
+#treeArea{position:absolute;inset:0;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;background:radial-gradient(circle at center,rgba(59,130,246,.08),transparent 42%),#0b1220}
+#treeArea:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.28;background-image:linear-gradient(rgba(148,163,184,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.08) 1px,transparent 1px);background-size:40px 40px}
+#world{position:absolute;left:0;top:0;width:9000px;height:6000px;transform-origin:0 0}
+#connections{position:absolute;left:0;top:0;width:9000px;height:6000px;overflow:visible;pointer-events:none}
+.connection{fill:none;stroke:#94a3b8;stroke-width:3.5;stroke-linecap:round;pointer-events:none}
+.connection.spouse{stroke:#f59e0b}
+.connection.selected{stroke:#60a5fa;stroke-width:5}
+.connection-hit{fill:none;stroke:transparent;stroke-width:32;pointer-events:stroke;cursor:pointer}
+.line-handle{fill:#60a5fa;stroke:#fff;stroke-width:3;cursor:grab;pointer-events:auto}
+#peopleLayer{position:absolute;left:0;top:0;width:9000px;height:6000px}
+.person{position:absolute;width:210px;min-height:126px;background:#1e293b;border:2px solid #475569;border-radius:15px;box-shadow:0 12px 28px rgba(0,0,0,.32);overflow:hidden;cursor:grab;user-select:none;-webkit-touch-callout:none;touch-action:none;transition:box-shadow .1s,border-color .1s}
+.person:hover{border-color:#64748b}
+.person.dragging{cursor:grabbing;border-color:#60a5fa;box-shadow:0 18px 40px rgba(0,0,0,.5);transition:none;z-index:1000}
+.person.highlight{border-color:#facc15;box-shadow:0 0 0 4px rgba(250,204,21,.18),0 18px 40px rgba(0,0,0,.45)}
+.person.search-match{border-color:#00ff88!important;box-shadow:0 0 0 5px rgba(0,255,136,.32),0 0 28px rgba(0,255,136,.42),0 18px 40px rgba(0,0,0,.5)!important;z-index:1200}
+.person.search-match .name{color:#ffffff;text-shadow:0 0 10px rgba(0,255,136,.55)}
+.person.search-dim{opacity:.28;filter:saturate(.45)}
+.search:focus{border-color:#00ff88;box-shadow:0 0 0 3px rgba(0,255,136,.18)}
+.search-count{color:#00ff88;font-weight:800;font-size:12px;white-space:nowrap}
+.export-wrap{position:relative;display:inline-flex}.export-menu{position:absolute;top:calc(100% + 7px);left:0;min-width:190px;background:#172033;border:1px solid #475569;border-radius:10px;box-shadow:0 18px 45px rgba(0,0,0,.5);padding:6px;display:none;z-index:300}.export-menu.open{display:block}.export-menu button{display:block;width:100%;text-align:left;border:0!important;background:transparent!important;padding:9px 10px;border-radius:7px}.export-menu button:hover{background:#334155!important}.export-status{font-size:12px;color:#94a3b8}
+.person.male{border-color:#3b82f6}.person.female{border-color:#ec4899}
+.card-top{display:flex;gap:10px;padding:10px}
+.avatar{width:58px;height:58px;flex:0 0 58px;border-radius:12px;overflow:hidden;background:#334155;display:flex;align-items:center;justify-content:center;color:#cbd5e1;font-size:23px;font-weight:700}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.info{min-width:0}.name{font-size:14px;font-weight:800;line-height:1.25;overflow-wrap:anywhere;color:#f8fafc}
+.date{font-size:11px;color:#94a3b8;margin-top:5px}.place{font-size:10px;color:#64748b;margin-top:2px}
+.card-bottom{border-top:1px solid rgba(148,163,184,.15);padding:7px 10px;color:#94a3b8;font-size:10px}
+.panel{position:absolute;right:12px;top:12px;width:330px;max-height:calc(100% - 24px);overflow:auto;background:rgba(15,23,42,.97);border:1px solid #334155;border-radius:15px;box-shadow:0 20px 50px rgba(0,0,0,.45);z-index:200;display:none}
+.panel.open{display:block}.panel-head{position:sticky;top:0;background:#172033;border-bottom:1px solid #334155;padding:12px 14px;display:flex;justify-content:space-between;align-items:center}
+.close{width:30px;height:30px;border-radius:8px;border:1px solid #475569;background:#243044;color:#fff}.panel-body{padding:15px}
+.field{margin-bottom:11px}.field label{display:block;color:#94a3b8;font-size:12px;margin-bottom:5px}
+.field input,.field select,.field textarea{width:100%;background:#0f172a;color:#fff;border:1px solid #475569;border-radius:8px;padding:9px;outline:0}
+.field textarea{min-height:80px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:#60a5fa}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.actions{display:flex;gap:7px;flex-wrap:wrap}.actions button{border:1px solid #475569;background:#243044;color:#fff;padding:8px 10px;border-radius:8px}.actions .primary{background:#2563eb;border-color:#3b82f6}.actions .danger{background:#7f1d1d;border-color:#991b1b}
+.detail-name{font-size:21px;font-weight:800;margin-bottom:8px}.detail-row{padding:8px 0;border-bottom:1px solid rgba(148,163,184,.12)}.label{color:#64748b;font-size:11px;margin-bottom:3px}.value{color:#e2e8f0;font-size:13px;line-height:1.4}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:500;display:none;align-items:center;justify-content:center}.modal-bg.open{display:flex}
+.modal{width:min(620px,calc(100% - 24px));max-height:calc(100% - 24px);overflow:auto;background:#172033;border:1px solid #475569;border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.modal-head,.modal-foot{padding:14px 17px;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center}.modal-foot{border-top:1px solid #334155;border-bottom:0;justify-content:flex-end;gap:8px}.modal-body{padding:17px}
+.help{position:absolute;left:12px;bottom:12px;max-width:calc(100% - 96px);z-index:150;background:rgba(15,23,42,.9);border:1px solid #334155;border-radius:9px;padding:8px 11px;color:#94a3b8;font-size:11px;pointer-events:none}
+.zoom-btns{position:absolute;right:12px;bottom:12px;z-index:150;display:flex;flex-direction:column;gap:8px}
+.zoom-btns button{width:44px;height:44px;border-radius:12px;border:1px solid #475569;background:rgba(23,32,51,.95);color:#fff;font-size:22px;line-height:1;padding:0}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:#15803d;color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:900}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.topbar{height:auto;min-height:64px;flex-wrap:wrap}.logo{font-size:16px}.topbar button{padding:8px 9px;font-size:13px}.stats{margin-left:0}.search{flex:1 1 140px;width:auto;min-width:120px}.panel{width:calc(100% - 24px)}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="logo">🌳 Родословная Князевых</div>
+  <button class="primary" onclick="openPersonEditor()">＋ Человек</button>
+  <button onclick="startConnectMode()">🔗 Связь</button>
+  <button class="save" onclick="saveAll()">💾 Сохранить на сервер</button>
+  <button class="server-load" id="serverLoadBtn" type="button" onclick="reloadServerData()">☁️ Загрузить с сервера</button>
+  <span id="syncStatus" class="sync-status">☁️ Проверка сервера…</span>
+  <div class="export-wrap" id="exportWrap">
+    <button type="button" onclick="toggleExportMenu(event)">📤 Экспорт ▾</button>
+    <div id="exportMenu" class="export-menu">
+      <button type="button" onclick="exportTree('pdf')">📄 PDF</button>
+      <button type="button" onclick="exportTree('png')">🖼 PNG</button>
+      <button type="button" onclick="exportTree('jpeg')">🖼 JPEG</button>
+      <button type="button" onclick="exportTree('tiff')">🖼 TIFF</button>
+      <button type="button" onclick="exportTable('xlsx')">📊 Таблица Excel (.xlsx)</button>
+      <button type="button" onclick="exportTable('csv')">📋 Таблица CSV (.csv)</button>
+    </div>
+  </div>
+  <input id="search" class="search" placeholder="Поиск человека…">
+  <span id="searchCount" class="search-count"></span>
+  <div id="stats" class="stats"></div>
+</header>
+
+<main class="workspace">
+  <div id="treeArea">
+    <div id="world">
+      <svg id="connections" viewBox="0 0 9000 6000"></svg>
+      <div id="peopleLayer"></div>
+    </div>
+  </div>
+
+  <aside id="panel" class="panel">
+    <div class="panel-head"><strong id="panelTitle"></strong><button class="close" onclick="closePanel()">×</button></div>
+    <div id="panelBody" class="panel-body"></div>
+  </aside>
+
+  <div class="help">Тяните карточку или пустое место пальцем · щипок двумя пальцами — масштаб · стрелка: родитель → ребёнок · оранжевая ⇄ — супруги</div>
+  <div class="zoom-btns"><button type="button" onclick="zoomBy(1.25)" aria-label="Приблизить">＋</button><button type="button" onclick="zoomBy(0.8)" aria-label="Отдалить">－</button></div>
+</main>
+
+<div id="toast" class="toast"></div>
+<div id="modalBg" class="modal-bg">
+  <div class="modal">
+    <div class="modal-head"><strong id="modalTitle">Человек</strong><button class="close" onclick="closeModal()">×</button></div>
+    <form id="personForm">
+      <div class="modal-body">
+        <input id="editId" type="hidden">
+        <div class="row">
+          <div class="field"><label>Имя</label><input id="firstName" required></div>
+          <div class="field"><label>Фамилия</label><input id="lastName"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>Дата рождения</label><input id="birthDate"></div>
+          <div class="field"><label>Место рождения</label><input id="birthPlace"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>Пол</label><select id="gender"><option value="male">Мужчина</option><option value="female">Женщина</option><option value="unknown">Не указан</option></select></div>
+          <div class="field"><label>Фотография</label><input id="photo" type="file" accept="image/*"></div>
+        </div>
+        <div class="field"><label>Родители</label><select id="parents" multiple size="6"></select></div>
+        <div class="field"><label>Заметки</label><textarea id="notes"></textarea></div>
+      </div>
+      <div class="modal-foot"><button type="button" onclick="closeModal()">Отмена</button><button class="primary" type="submit">Сохранить</button></div>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/utif@3.1.0/UTIF.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script>
+const PEOPLE_KEY="familyTreeKnyazevy_v21";
+const CONNECTIONS_KEY="familyTreeKnyazevy_connections_v33";
+const POSITIONS_KEY="familyTreeKnyazevy_positions_v34";
+
+// URL серверной части. После публикации api/tree.js на Vercel укажите сюда
+// полный адрес функции, например: https://rodoslovnaya-api.vercel.app/api/tree
+const API_URL="https://rodoslovnaya-knyazevy.vercel.app/api/tree";
+const LAST_SERVER_SAVE_KEY="familyTreeKnyazevy_lastServerSave_v1";
+let serverSnapshot="", syncingServer=false, lastServerSavedAt="";
+
+function P(id,first,last,o={}){return {id,firstName:first,lastName:last,birthDate:o.birthDate||"",birthPlace:o.birthPlace||"",gender:o.gender||"unknown",photo:o.photo||"",notes:o.notes||"",parents:o.parents||[],spouses:o.spouses||[]}}
+const FULL=[
+P("denis","Денис","Игоревич Князев",{birthDate:"31.10.1988",birthPlace:"Новокуйбышевск",gender:"male",parents:["igor","olga"],spouses:["alyona"]}),
+P("alyona","Алёна","Владимировна Князева (Панина)",{birthDate:"02.08.1990",birthPlace:"Новокуйбышевск",gender:"female",parents:["vladimir","svetlana-z"],spouses:["denis"]}),
+P("daniel","Даниил","Денисович Князев",{birthDate:"26.07.2013",birthPlace:"Новокуйбышевск",gender:"male",parents:["denis","alyona"]}),
+P("valeria","Валерия","Денисовна Князева",{birthDate:"17.12.2017",birthPlace:"Новокуйбышевск",gender:"female",parents:["denis","alyona"]}),
+P("igor","Игорь","Анатольевич Князев",{birthDate:"17.10.1963",birthPlace:"Мордвес, Тульская область",gender:"male",parents:["anatoly","magdalina"],spouses:["olga"]}),
+P("olga","Ольга","Рюриковна Князева (Лохова)",{birthDate:"21.07.1964",birthPlace:"Малиновка, Плесецкий район, Архангельская область",gender:"female",parents:["rurik","svetlana-l"],spouses:["igor"]}),
+P("anatoly","Анатолий","Князев",{gender:"male",spouses:["magdalina"]}),
+P("magdalina","Магдалина Спиридоновна","Спиридонова (Князева)",{birthDate:"07.08.1945",birthPlace:"д. Шигали, Канашский район, Чувашская Республика",gender:"female",parents:["spiridon","matrena"],spouses:["anatoly","vladimir-s"]}),
+P("vladimir-s","Владимир Иванович","Секуняев",{birthDate:"15.02.1940",birthPlace:"Новый Шунгут, Исаклинский район, Куйбышевская область",gender:"male",spouses:["magdalina"],notes:"Второй муж Магдалины, брак 1971."}),
+P("oksana","Оксана Владимировна","Князева",{birthDate:"09.08.1971",birthPlace:"Новокуйбышевск",gender:"female",parents:["magdalina","vladimir-s"]}),
+P("rurik","Лохов Рюрик","Николаевич",{birthDate:"09.09.1934",birthPlace:"Малиновка, Плесецкий район",gender:"male",parents:["nikolai","klavdia"],spouses:["svetlana-l"]}),
+P("svetlana-l","Кириллова Светлана","Егоровна",{birthDate:"28.11.1941",birthPlace:"Самодед, Плесецкий район",gender:"female",parents:["egor","efimia"],spouses:["rurik"]}),
+P("nikolai","Лохов Николай","Васильевич",{gender:"male",spouses:["klavdia"]}),
+P("klavdia","Клавдия","Лохова",{gender:"female",spouses:["nikolai"]}),
+P("egor","Кириллов Егор","Иванович",{gender:"male",spouses:["efimia"]}),
+P("efimia","Морева Ефимья","Абрамовна",{birthDate:"16.07.1903",birthPlace:"Моржегорский сельсовет, Виноградовский район, Архангельская область",gender:"female",spouses:["egor"]}),
+P("evgeny-k","Кириллов Евгений","Егорович",{gender:"male",parents:["egor","efimia"]}),
+P("evgeny-l","Лохов Евгений","Рюрикович",{birthDate:"02.03.1961",birthPlace:"Малиновка",gender:"male",parents:["rurik","svetlana-l"],spouses:["larisa"]}),
+P("larisa","Лариса","Витальевна",{gender:"female",spouses:["evgeny-l"]}),
+P("marina","Лохова Марина","Евгеньевна",{birthDate:"09.05.1983",gender:"female",parents:["evgeny-l","larisa"]}),
+P("arkady","Лохов Аркадий","Рюрикович",{birthDate:"04.04.1967",birthPlace:"Малиновка",gender:"male",parents:["rurik","svetlana-l"],spouses:["elena"]}),
+P("elena","Елена","",{gender:"female",spouses:["arkady"]}),
+P("pavel","Лохов Павел","Аркадьевич",{birthDate:"14.03.1991",birthPlace:"Северодвинск",gender:"male",parents:["arkady","elena"]}),
+P("svetlana-a","Лохова Светлана","Аркадьевна",{birthDate:"02.01.1993",birthPlace:"Северодвинск",gender:"female",parents:["arkady","elena"]}),
+P("ilya","Лохов Илья","Рюрикович",{birthDate:"01.04.1973",birthPlace:"Малиновка",gender:"male",parents:["rurik","svetlana-l"]}),
+P("spiridon","Данилов Спиридон","Данилович",{gender:"male",spouses:["matrena"]}),
+P("matrena","Федорова Матрёна","Федоровна",{gender:"female",spouses:["spiridon"]}),
+P("sinius","Спиридонов Синиус","Спиридонович",{birthDate:"02.01.1948",birthPlace:"Шигали",gender:"male",parents:["spiridon","matrena"],spouses:["roza"]}),
+P("roza","Мишуткина Роза","Васильевна",{gender:"female",spouses:["sinius"]}),
+P("ludmila","Людмила","Синиусовна",{birthDate:"19.11.1969",birthPlace:"Шигали",gender:"female",parents:["sinius","roza"]}),
+P("igor-s","Игорь","Синиусович",{birthDate:"05.11.1972",birthPlace:"Шигали",gender:"male",parents:["sinius","roza"]}),
+P("alyona-s","Алёна","Синиусовна",{birthDate:"11.02.1980",birthPlace:"Шигали",gender:"female",parents:["sinius","roza"]}),
+P("viktor-d","Спиридонов Виктор","Данилович",{birthDate:"1924",birthPlace:"Шигали",gender:"male",parents:["spiridon","matrena"],spouses:["anastasia"]}),
+P("anastasia","Анастасия","",{gender:"female",spouses:["viktor-d"]}),
+P("vladimir-v","Владимир","Викторович",{gender:"male",parents:["viktor-d","anastasia"]}),
+P("nikolai-v","Николай","Викторович",{gender:"male",parents:["viktor-d","anastasia"]}),
+P("taisya","Спиридонова Таисия","Даниловна",{birthPlace:"Шигали",gender:"female",parents:["spiridon","matrena"]}),
+P("sergey-i","Спиридонов Сергей","Иванович",{gender:"male",parents:["taisya"],notes:"Тольятти указан как место проживания."}),
+P("svetlana-d","Спиридонова Светлана","Даниловна",{birthPlace:"Шигали",gender:"female",parents:["spiridon","matrena"],spouses:["nuria"]}),
+P("galya","Галя","",{gender:"female",parents:["svetlana-d"],notes:"Дочь Светланы Даниловны от первого брака."}),
+P("nuria","Сафин Нуриахмет","",{gender:"male",spouses:["svetlana-d"]}),
+P("lida-s","Лида","Нуриахметовна Сафина",{gender:"female",parents:["svetlana-d","nuria"]}),
+P("vera-s","Вера","Нуриахметовна Сафина",{gender:"female",parents:["svetlana-d","nuria"]}),
+P("yuri-s","Юрий","Нуриахметович Сафин",{birthDate:"20.01.1973",gender:"male",parents:["svetlana-d","nuria"]}),
+P("andrey-s","Андрей","Нуриахметович Сафин",{gender:"male",parents:["svetlana-d","nuria"]}),
+P("tatiana-s","Татьяна","Нуриахметовна Сафина",{gender:"female",parents:["svetlana-d","nuria"]}),
+P("natalia-s","Наталья","Нуриахметовна Сафина",{gender:"female",parents:["svetlana-d","nuria"]}),
+P("oksana-s","Оксана","Нуриахметовна Сафина",{gender:"female",parents:["svetlana-d","nuria"]}),
+P("lidia-d","Спиридонова Лидия","Даниловна",{birthPlace:"Шигали",gender:"female",parents:["spiridon","matrena"],spouses:["zemskov"]}),
+P("zemskov","Сергей","Земсков",{gender:"male",spouses:["lidia-d"]}),
+P("katya-z","Катя Сергеевна","Земскова",{gender:"female",parents:["lidia-d","zemskov"]}),
+P("vladimir","Панин Владимир","Викторович",{birthDate:"1967",birthPlace:"Новокуйбышевск",gender:"male",parents:["viktor-p","nina"],spouses:["svetlana-z"],notes:"Исходная запись: 31.06.1967 — дата требует уточнения."}),
+P("viktor-p","Виктор","Панин",{gender:"male",spouses:["nina"]}),
+P("nina","Нина Николаевна","Зюзина (Панина)",{birthDate:"23.01.1940",gender:"female",parents:["arina"],spouses:["viktor-p"],notes:"Отец неизвестен."}),
+P("arina","Арина","Зюзина",{gender:"female"}),
+P("stepan","Степан Леонович","Захаренко",{birthDate:"10.01.1934",birthPlace:"Беларусь, село Ушачи",gender:"male",spouses:["valentina"]}),
+P("valentina","Валентина Александровна","Калинина (Захаренко)",{birthDate:"05.06.1936",birthPlace:"Пенза",gender:"female",parents:["alexander","afinia"],spouses:["stepan"]}),
+P("irina-z","Ирина Степановна","Захаренко",{birthDate:"23.05.1959",birthPlace:"Новокуйбышевск",gender:"female",parents:["stepan","valentina"]}),
+P("svetlana-z","Светлана Степановна","Захаренко",{birthDate:"09.09.1970",birthPlace:"Новокуйбышевск",gender:"female",parents:["stepan","valentina"],spouses:["vladimir"]}),
+P("alexander","Александр Михайлович","Калинин",{birthDate:"12.12.1912",gender:"male",parents:["mikhail","tatiana"],spouses:["afinia"]}),
+P("afinia","Афиния Алексеевна","Калинина (Ситникова)",{birthDate:"12.09.1913",gender:"female",parents:["alexey","maria"],spouses:["alexander"]}),
+P("mikhail","Михаил Романович","Калинин",{gender:"male",spouses:["tatiana"]}),
+P("tatiana","Татьяна Макеевна","Калинина",{gender:"female",spouses:["mikhail"]}),
+P("alexey","Алексей Пантелеевич","Ситников",{gender:"male",spouses:["maria"]}),
+P("maria","Мария","Ситникова",{gender:"female",spouses:["alexey"]})
+];
+
+const POS={
+denis:[3900,2500],alyona:[4150,2500],daniel:[3900,2750],valeria:[4150,2750],
+igor:[3400,2200],olga:[3650,2200],anatoly:[2800,1850],magdalina:[3050,1850],"vladimir-s":[3300,1850],oksana:[3175,2200],
+rurik:[3400,1500],"svetlana-l":[3650,1500],nikolai:[3150,1150],klavdia:[3380,1150],egor:[3620,1150],efimia:[3850,1150],"evgeny-k":[4080,1500],
+"evgeny-l":[2800,2200],larisa:[3030,2200],marina:[2915,2550],arkady:[2350,2200],elena:[2580,2200],pavel:[2350,2550],"svetlana-a":[2580,2550],ilya:[2050,2200],
+spiridon:[2350,1500],matrena:[2600,1500],sinius:[1900,1850],roza:[2130,1850],ludmila:[1750,2200],"igor-s":[1980,2200],"alyona-s":[2210,2200],
+"viktor-d":[1450,1850],anastasia:[1680,1850],"vladimir-v":[1400,2200],"nikolai-v":[1630,2200],taisya:[1000,1850],"sergey-i":[1000,2250],
+"svetlana-d":[700,2200],nuria:[930,2200],galya:[480,2550],"lida-s":[600,2550],"vera-s":[830,2550],"yuri-s":[1060,2550],"andrey-s":[1290,2550],"tatiana-s":[1520,2550],"natalia-s":[1750,2550],"oksana-s":[1980,2550],
+"lidia-d":[700,2900],zemskov:[930,2900],"katya-z":[815,3250],
+vladimir:[4450,2200],"viktor-p":[4350,1850],nina:[4580,1850],arina:[4580,1500],
+stepan:[4900,1850],valentina:[5130,1850],"irina-z":[5360,2200],"svetlana-z":[4700,2200],alexander:[5100,1500],afinia:[5330,1500],mikhail:[5000,1150],tatiana:[5230,1150],alexey:[5450,1150],maria:[5680,1150]
+};
+
+let people=loadPeople(),connections=loadConnections(),positions=loadPositions();
+let serverLoaded=false;
+let scale=.65,ox=0,oy=0,pan=null,drag=null,selectedPerson=null,selectedConnection=null,connectMode=false,connectFirst=null,handleDrag=null;
+
+const area=document.getElementById("treeArea"),world=document.getElementById("world"),peopleLayer=document.getElementById("peopleLayer"),svg=document.getElementById("connections");
+
+const cardH={};
+function clone(x){return JSON.parse(JSON.stringify(x))}
+function getPerson(id){return people.find(p=>p.id===id)}
+function nameOf(p){return p?[p.lastName,p.firstName].filter(Boolean).join(" ").trim()||"Без имени":"Неизвестно"}
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function uid(){return "id_"+Date.now()+"_"+Math.random().toString(16).slice(2)}
+
+function stateFingerprint(){
+  return JSON.stringify({people,connections,positions});
+}
+function formatSavedAt(value){
+  if(!value)return "—";
+  const d=new Date(value); if(Number.isNaN(d.getTime()))return "—";
+  return d.toLocaleString("ru-RU",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"});
+}
+function updateSyncStatus(){
+  const el=document.getElementById("syncStatus"); if(!el)return;
+  const dirty=!!serverSnapshot && stateFingerprint()!==serverSnapshot;
+  el.className="sync-status "+(dirty?"dirty":(serverLoaded?"ok":"error"));
+  if(dirty){el.textContent="⚠️ Есть несохранённые изменения";el.title="Локальные данные отличаются от данных на сервере. Нажмите «Сохранить» для отправки на сервер.";}
+  else if(serverLoaded){el.textContent="🕐 Последнее сохранение: "+formatSavedAt(lastServerSavedAt);el.title=lastServerSavedAt?"Последнее успешное сохранение на сервере: "+formatSavedAt(lastServerSavedAt):"Данные синхронизированы с сервером";}
+  else{el.textContent="⚠️ Сервер не подключён";el.title="Сайт пока работает с локальной копией.";}
+}
+function setServerSavedAt(value){
+  if(value){lastServerSavedAt=value;localStorage.setItem(LAST_SERVER_SAVE_KEY,value);}
+}
+
+async function loadServerData(){
+  if(API_URL.includes("YOUR-VERCEL-PROJECT")){
+    throw new Error("Не указан API_URL сервера");
+  }
+  const url=API_URL+(API_URL.includes("?")?"&":"?")+"t="+Date.now();
+  const r=await fetch(url,{cache:"no-store",headers:{"Accept":"application/json"}});
+  if(!r.ok){
+    let msg="Сервер вернул HTTP "+r.status;
+    try{const d=await r.json();if(d.error)msg=d.error;}catch(e){}
+    throw new Error(msg);
+  }
+  const d=await r.json();
+  if(!Array.isArray(d.people))throw new Error("Сервер вернул некорректные данные people");
+  syncingServer=true;
+  people=d.people.map(p=>({...p,parents:p.parents||[],spouses:p.spouses||[]}));
+  connections=Array.isArray(d.connections)?d.connections:buildConnections();
+  positions=(d.positions&&typeof d.positions==="object")?d.positions:{};
+  people.forEach(p=>{if(!positions[p.id])positions[p.id]=POS[p.id]?{x:POS[p.id][0],y:POS[p.id][1]}:{x:4000,y:3000}});
+  serverLoaded=true;
+  if(d.meta&&d.meta.lastServerSavedAt)setServerSavedAt(d.meta.lastServerSavedAt);
+  else if(!lastServerSavedAt)lastServerSavedAt=localStorage.getItem(LAST_SERVER_SAVE_KEY)||"";
+  savePeople();saveConnections();savePositions();
+  serverSnapshot=stateFingerprint();
+  syncingServer=false;
+  render();centerTree();
+  updateSyncStatus();
+  toast("✓ Актуальная база загружена с сервера");
+}
+
+async function reloadServerData(){
+  const btn=document.getElementById("serverLoadBtn");
+  const ok=confirm("Загрузить последнюю версию родословной с сервера?\n\nНесохранённые изменения в этом браузере будут заменены данными с сервера.");
+  if(!ok)return;
+  if(btn){btn.disabled=true;btn.textContent="⏳ Загрузка...";}
+  try{
+    await loadServerData();
+  }catch(err){
+    syncingServer=false;
+    console.error("Ошибка ручной загрузки серверной базы:",err);
+    alert("Не удалось загрузить данные с сервера:\n\n"+err.message);
+  }finally{
+    if(btn){btn.disabled=false;btn.textContent="☁️ Загрузить с сервера";}
+  }
+}
+
+async function saveToServer(){
+  if(API_URL.includes("YOUR-VERCEL-PROJECT")){
+    throw new Error("Сначала укажите API_URL в index.html");
+  }
+  const password=sessionStorage.getItem("RODO_ADMIN_PASSWORD")||prompt("Введите пароль администратора:");
+  if(!password)throw new Error("Сохранение отменено");
+  sessionStorage.setItem("RODO_ADMIN_PASSWORD",password);
+  const payload={version:"1.1",meta:{lastServerSavedAt:new Date().toISOString()},people,connections,positions};
+  const r=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"application/json","X-Admin-Password":password},body:JSON.stringify(payload)});
+  const d=await r.json().catch(()=>({}));
+  if(!r.ok){
+    if(r.status===401)sessionStorage.removeItem("RODO_ADMIN_PASSWORD");
+    throw new Error(d.error||("Сервер вернул HTTP "+r.status));
+  }
+  return d;
+}
+
+function loadPeople(){
+  try{const x=JSON.parse(localStorage.getItem(PEOPLE_KEY)||"null");if(Array.isArray(x)&&x.length)return x.map(p=>({...p,parents:p.parents||[],spouses:p.spouses||[]}))}catch(e){}
+  return clone(FULL);
+}
+function savePeople(){localStorage.setItem(PEOPLE_KEY,JSON.stringify(people))}
+function loadPositions(){
+  let x={};
+  try{x=JSON.parse(localStorage.getItem(POSITIONS_KEY)||"{}")||{}}catch(e){}
+  people.forEach(p=>{if(!x[p.id])x[p.id]=POS[p.id]?{x:POS[p.id][0],y:POS[p.id][1]}:{x:4000,y:3000}});
+  return x;
+}
+function savePositions(){localStorage.setItem(POSITIONS_KEY,JSON.stringify(positions))}
+function buildConnections(){
+  const a=[],seen=new Set();
+  people.forEach(ch=>(ch.parents||[]).forEach(pa=>{
+    if(!getPerson(pa))return;
+    const k=pa+">"+ch.id;if(seen.has(k))return;seen.add(k);
+    a.push({id:uid(),type:"parent",from:pa,to:ch.id,bendX:0,bendY:0});
+  }));
+  const s=new Set();
+  people.forEach(p=>(p.spouses||[]).forEach(q=>{
+    if(!getPerson(q))return;const ids=[p.id,q].sort(),k=ids[0]+"::"+ids[1];
+    if(s.has(k))return;s.add(k);a.push({id:uid(),type:"spouse",from:p.id,to:q,bendX:0,bendY:0});
+  }));
+  return a;
+}
+function loadConnections(){
+  try{const x=JSON.parse(localStorage.getItem(CONNECTIONS_KEY)||"null");if(Array.isArray(x)&&x.length)return x}catch(e){}
+  return buildConnections();
+}
+function saveConnections(){localStorage.setItem(CONNECTIONS_KEY,JSON.stringify(connections))}
+function syncRelations(){
+  people.forEach(p=>{p.parents=[];p.spouses=[]});
+  connections.forEach(c=>{
+    const a=getPerson(c.from),b=getPerson(c.to);if(!a||!b)return;
+    if(c.type==="parent")a&&b.parents.push(c.from);
+    else{a.spouses.push(b.id);b.spouses.push(a.id)}
+  });
+  people.forEach(p=>{p.parents=[...new Set(p.parents)];p.spouses=[...new Set(p.spouses)]});
+  savePeople();
+}
+function setTransform(){world.style.transform=`translate(${ox}px,${oy}px) scale(${scale})`}
+function worldPoint(cx,cy){const r=area.getBoundingClientRect();return{x:(cx-r.left-ox)/scale,y:(cy-r.top-oy)/scale}}
+
+function cardHTML(p){
+  const letter=(p.firstName||p.lastName||"?").trim()[0]?.toUpperCase()||"?";
+  return `<div class="card-top"><div class="avatar">${p.photo?`<img src="${esc(p.photo)}">`:esc(letter)}</div><div class="info"><div class="name">${esc(nameOf(p))}</div><div class="date">${esc(p.birthDate||"Дата неизвестна")}</div>${p.birthPlace?`<div class="place">${esc(p.birthPlace)}</div>`:""}</div></div><div class="card-bottom">${p.parents?.length?`Родителей: ${p.parents.length}`:"Родители неизвестны"}</div>`;
+}
+
+function renderPeople(){
+  peopleLayer.innerHTML="";
+  people.forEach(p=>{
+    const pos=positions[p.id]||{x:4000,y:3000};
+    const el=document.createElement("div");
+    el.className=`person ${p.gender||"unknown"}`;
+    if(selectedPerson===p.id)el.classList.add("highlight");
+    el.dataset.id=p.id;
+    el.style.left=pos.x+"px";el.style.top=pos.y+"px";
+    el.innerHTML=cardHTML(p);
+    el.addEventListener("pointerdown",startPersonDrag);
+    el.addEventListener("click",e=>{
+      e.stopPropagation();
+      if(el.dataset.dragged==="1"){delete el.dataset.dragged;return}
+      if(connectMode){connectPerson(p.id);return}
+      selectedPerson=p.id;selectedConnection=null;openPersonPanel(p);renderPeople();renderConnections();
+    });
+    el.addEventListener("dblclick",e=>{e.stopPropagation();openPersonEditor(p.id)});
+    peopleLayer.appendChild(el);
+    cardH[p.id]=el.offsetHeight;
+  });
+}
+
+const CARD_W=210,CARD_DEF_H=126,SVGNS="http://www.w3.org/2000/svg";
+function edgePoint(cx,cy,hw,hh,tx,ty,gap){
+  const dx=tx-cx,dy=ty-cy,len=Math.hypot(dx,dy);
+  if(!len)return{x:cx,y:cy};
+  const k=Math.min(hw/(Math.abs(dx)||1e-9),hh/(Math.abs(dy)||1e-9));
+  return{x:cx+dx*k+dx/len*gap,y:cy+dy*k+dy/len*gap};
+}
+function geom(c){
+  const a=positions[c.from],b=positions[c.to];if(!a||!b)return null;
+  const hw=CARD_W/2,ha=(cardH[c.from]||CARD_DEF_H)/2,hb=(cardH[c.to]||CARD_DEF_H)/2;
+  const ax=a.x+hw,ay=a.y+ha,bx=b.x+hw,by=b.y+hb;
+  const cx0=(ax+bx)/2,cy0=(ay+by)/2,mx=cx0+(c.bendX||0),my=cy0+(c.bendY||0);
+  return{s:edgePoint(ax,ay,hw,ha,mx,my,3),e:edgePoint(bx,by,hw,hb,mx,my,3),mx,my,cx0,cy0};
+}
+function markerDef(id,color){
+  return `<marker id="${id}" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="22" markerHeight="22" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="${color}"/></marker>`;
+}
+function renderConnections(){
+  svg.innerHTML=`<defs>${markerDef("ah-parent","#94a3b8")}${markerDef("ah-spouse","#f59e0b")}${markerDef("ah-sel","#60a5fa")}</defs>`;
+  connections.forEach(c=>{
+    const g=geom(c);if(!g)return;
+    const d=`M ${g.s.x} ${g.s.y} Q ${g.mx} ${g.my} ${g.e.x} ${g.e.y}`;
+    const hit=document.createElementNS(SVGNS,"path");
+    hit.setAttribute("d",d);hit.classList.add("connection-hit");hit.dataset.id=c.id;
+    hit.addEventListener("click",e=>{e.stopPropagation();selectedConnection=c.id;selectedPerson=null;openConnectionPanel(c);renderPeople();renderConnections()});
+    svg.appendChild(hit);
+    const sel=selectedConnection===c.id;
+    const line=document.createElementNS(SVGNS,"path");
+    line.setAttribute("d",d);line.classList.add("connection",c.type);if(sel)line.classList.add("selected");
+    const mk=sel?"ah-sel":(c.type==="spouse"?"ah-spouse":"ah-parent");
+    line.setAttribute("marker-end",`url(#${mk})`);
+    if(c.type==="spouse")line.setAttribute("marker-start",`url(#${mk})`);
+    svg.appendChild(line);
+    if(sel){
+      const h=document.createElementNS(SVGNS,"circle");
+      h.setAttribute("cx",g.mx);h.setAttribute("cy",g.my);h.setAttribute("r",14);h.classList.add("line-handle");
+      h.addEventListener("pointerdown",e=>{e.stopPropagation();e.preventDefault();handleDrag={id:c.id,pointerId:e.pointerId}});
+      svg.appendChild(h);
+    }
+  });
+}
+function render(){renderPeople();renderConnections();document.getElementById("stats").textContent=`Людей: ${people.length} · Связей: ${connections.length}`}
+
+function startPersonDrag(e){
+  if(connectMode||pinch)return;
+  if(e.pointerType==="mouse"&&e.button!==0)return;
+  const el=e.currentTarget,p=getPerson(el.dataset.id),pos=positions[p.id];
+  const pt=worldPoint(e.clientX,e.clientY);
+  drag={id:p.id,el,pointerId:e.pointerId,sx:pt.x,sy:pt.y,px:pos.x,py:pos.y,moved:false};
+  el.setPointerCapture?.(e.pointerId);el.classList.add("dragging");
+  e.stopPropagation();e.preventDefault();
+}
+document.addEventListener("pointermove",e=>{
+  if(drag&&e.pointerId===drag.pointerId){
+    const pt=worldPoint(e.clientX,e.clientY),dx=pt.x-drag.sx,dy=pt.y-drag.sy;
+    if(Math.abs(dx)>3||Math.abs(dy)>3)drag.moved=true;
+    if(drag.moved){
+      positions[drag.id]={x:drag.px+dx,y:drag.py+dy};
+      drag.el.style.left=positions[drag.id].x+"px";drag.el.style.top=positions[drag.id].y+"px";
+      renderConnections();savePositions();drag.el.dataset.dragged="1";
+    }
+    e.preventDefault();
+  }
+  if(handleDrag&&e.pointerId===handleDrag.pointerId){
+    const c=connections.find(x=>x.id===handleDrag.id);if(!c)return;
+    const g=geom(c),pt=worldPoint(e.clientX,e.clientY);if(!g)return;
+    c.bendX=pt.x-g.cx0;c.bendY=pt.y-g.cy0;
+    renderConnections();saveConnections();e.preventDefault();
+  }
+},{passive:false,capture:true});
+document.addEventListener("pointerup",e=>{
+  if(drag&&e.pointerId===drag.pointerId){drag.el.classList.remove("dragging");savePositions();drag=null}
+  if(handleDrag&&e.pointerId===handleDrag.pointerId){saveConnections();handleDrag=null}
+},{capture:true});
+
+area.addEventListener("wheel",e=>{
+  e.preventDefault();const before=worldPoint(e.clientX,e.clientY),factor=e.deltaY<0?1.12:.89;
+  scale=clampScale(scale*factor);const r=area.getBoundingClientRect();
+  ox=e.clientX-r.left-before.x*scale;oy=e.clientY-r.top-before.y*scale;setTransform();
+},{passive:false});
+
+/* ---- масштаб щипком (два пальца) ---- */
+const touches=new Map();let pinch=null,panMoved=false;
+function clampScale(v){return Math.max(.1,Math.min(2.5,v))}
+function pinchStart(){
+  const [p1,p2]=[...touches.values()],r=area.getBoundingClientRect();
+  const cx=(p1.x+p2.x)/2-r.left,cy=(p1.y+p2.y)/2-r.top;
+  pinch={d:Math.hypot(p1.x-p2.x,p1.y-p2.y)||1,s:scale,wx:(cx-ox)/scale,wy:(cy-oy)/scale};
+}
+area.addEventListener("pointerdown",e=>{
+  if(e.pointerType!=="touch")return;
+  touches.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(touches.size>=2){
+    if(drag){drag.el.classList.remove("dragging");delete drag.el.dataset.dragged;savePositions();drag=null}
+    handleDrag=null;pan=null;
+    if(!pinch)pinchStart();
+    e.stopPropagation();e.preventDefault();
+  }
+},true);
+area.addEventListener("pointermove",e=>{
+  if(e.pointerType!=="touch"||!touches.has(e.pointerId))return;
+  touches.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(pinch&&touches.size>=2){
+    const [p1,p2]=[...touches.values()],r=area.getBoundingClientRect();
+    const d=Math.hypot(p1.x-p2.x,p1.y-p2.y)||1;
+    scale=clampScale(pinch.s*d/pinch.d);
+    const cx=(p1.x+p2.x)/2-r.left,cy=(p1.y+p2.y)/2-r.top;
+    ox=cx-pinch.wx*scale;oy=cy-pinch.wy*scale;setTransform();
+    e.stopPropagation();e.preventDefault();
+  }
+},true);
+function touchEnd(e){if(touches.delete(e.pointerId)&&touches.size<2)pinch=null}
+area.addEventListener("pointerup",touchEnd,true);
+area.addEventListener("pointercancel",touchEnd,true);
+function zoomBy(f){
+  const r=area.getBoundingClientRect(),cx=r.width/2,cy=r.height/2,wx=(cx-ox)/scale,wy=(cy-oy)/scale;
+  scale=clampScale(scale*f);ox=cx-wx*scale;oy=cy-wy*scale;setTransform();
+}
+area.addEventListener("contextmenu",e=>e.preventDefault());
+
+/* ---- перемещение схемы ---- */
+area.addEventListener("pointerdown",e=>{
+  if(pinch)return;
+  if(e.target.closest(".person"))return;
+  if(e.target.closest(".connection-hit,.line-handle"))return;
+  if(e.button!==0&&e.button!==1)return;
+  panMoved=false;pan={sx:e.clientX,sy:e.clientY,ox,oy,moved:false};area.setPointerCapture?.(e.pointerId);
+});
+area.addEventListener("pointermove",e=>{
+  if(!pan)return;const dx=e.clientX-pan.sx,dy=e.clientY-pan.sy;
+  if(Math.abs(dx)>6||Math.abs(dy)>6)pan.moved=true;
+  ox=pan.ox+dx;oy=pan.oy+dy;setTransform();
+});
+function panEnd(){if(pan&&pan.moved)panMoved=true;pan=null}
+area.addEventListener("pointerup",panEnd);
+area.addEventListener("pointercancel",panEnd);
+
+function centerOn(id){
+  const p=positions[id];if(!p)return;
+  const r=area.getBoundingClientRect();ox=r.width/2-(p.x+105)*scale;oy=r.height/2-(p.y+63)*scale;setTransform();
+}
+function centerTree(){scale=.65;centerOn("denis")}
+function closePanel(){document.getElementById("panel").classList.remove("open")}
+function openPersonPanel(p){
+  const body=document.getElementById("panelBody");
+  const parents=(p.parents||[]).map(getPerson).filter(Boolean).map(x=>`<div class="value">${esc(nameOf(x))}</div>`).join("")||'<div class="value">не указаны</div>';
+  const spouses=(p.spouses||[]).map(getPerson).filter(Boolean).map(x=>`<div class="value">${esc(nameOf(x))}</div>`).join("")||'<div class="value">не указаны</div>';
+  document.getElementById("panelTitle").textContent=nameOf(p);
+  body.innerHTML=`<div class="detail-name">${esc(nameOf(p))}</div>
+  <div class="detail-row"><div class="label">Дата рождения</div><div class="value">${esc(p.birthDate||"не указана")}</div></div>
+  <div class="detail-row"><div class="label">Место рождения</div><div class="value">${esc(p.birthPlace||"не указано")}</div></div>
+  <div class="detail-row"><div class="label">Родители</div>${parents}</div>
+  <div class="detail-row"><div class="label">Супруг(и)</div>${spouses}</div>
+  ${p.notes?`<div class="detail-row"><div class="label">Заметки</div><div class="value">${esc(p.notes)}</div></div>`:""}
+  <div class="actions" style="margin-top:14px"><button class="primary" onclick="openPersonEditor('${p.id}')">✎ Изменить</button><button onclick="centerOn('${p.id}')">⌖ Центр</button><button class="danger" onclick="deletePerson('${p.id}')">🗑 Удалить</button></div>`;
+  document.getElementById("panel").classList.add("open");
+}
+function openConnectionPanel(c){
+  const a=getPerson(c.from),b=getPerson(c.to);
+  document.getElementById("panelTitle").textContent="Редактирование связи";
+  document.getElementById("panelBody").innerHTML=`<div class="detail-row"><div class="label">Тип</div><div class="value">${c.type==="spouse"?"Супруги ⇄":"Родитель → ребёнок"}</div></div>
+  <div class="detail-row"><div class="label">Люди</div><div class="value">${esc(nameOf(a))} ${c.type==="spouse"?"⇄":"→"} ${esc(nameOf(b))}</div></div>
+  <div class="actions"><button onclick="changeConnectionType('${c.id}')">Сменить тип</button>${c.type==="parent"?`<button onclick="reverseConnection('${c.id}')">⇄ Поменять направление</button>`:""}<button onclick="resetBend('${c.id}')">Сбросить изгиб</button><button class="danger" onclick="deleteConnection('${c.id}')">🗑 Удалить</button></div>
+  <p style="color:#94a3b8;font-size:12px;line-height:1.5">Синюю точку можно потянуть, чтобы изогнуть стрелку.</p>`;
+  document.getElementById("panel").classList.add("open");
+}
+function changeConnectionType(id){const c=connections.find(x=>x.id===id);if(!c)return;c.type=c.type==="parent"?"spouse":"parent";syncPeople();saveConnections();render();openConnectionPanel(c)}
+function resetBend(id){const c=connections.find(x=>x.id===id);if(!c)return;c.bendX=0;c.bendY=0;saveConnections();renderConnections()}
+function reverseConnection(id){const c=connections.find(x=>x.id===id);if(!c)return;[c.from,c.to]=[c.to,c.from];syncPeople();saveConnections();render();openConnectionPanel(c)}
+function deleteConnection(id){if(!confirm("Удалить эту связь?"))return;connections=connections.filter(c=>c.id!==id);syncPeople();saveConnections();selectedConnection=null;closePanel();render()}
+function syncPeople(){people.forEach(p=>{p.parents=[];p.spouses=[]});connections.forEach(c=>{const a=getPerson(c.from),b=getPerson(c.to);if(!a||!b)return;if(c.type==="parent")b.parents.push(a.id);else{a.spouses.push(b.id);b.spouses.push(a.id)}});people.forEach(p=>{p.parents=[...new Set(p.parents)];p.spouses=[...new Set(p.spouses)]});savePeople()}
+
+function startConnectMode(){connectMode=true;connectFirst=null;alert("Нажмите первого человека, затем второго. После этого выберите тип связи.")}
+function connectPerson(id){
+  if(!connectFirst){connectFirst=id;selectedPerson=id;renderPeople();return}
+  if(connectFirst===id){connectMode=false;connectFirst=null;return}
+  const a=getPerson(connectFirst),b=getPerson(id);
+  const t=prompt(`Связь между:\n${nameOf(a)}\nи\n${nameOf(b)}\n\n1 — родитель → ребёнок\n2 — супруги`,`1`);
+  if(t!=="1"&&t!=="2"){connectMode=false;connectFirst=null;return}
+  let from=connectFirst,to=id;
+  if(t==="1"&&!confirm(`Родитель — ${nameOf(a)}?\n\nOK — да\nОтмена — ${nameOf(b)} является родителем`)){from=id;to=connectFirst}
+  connections.push({id:uid(),type:t==="1"?"parent":"spouse",from,to,bendX:0,bendY:0});
+  syncPeople();saveConnections();connectMode=false;connectFirst=null;render();
+}
+
+function openPersonEditor(id=null){
+  document.getElementById("personForm").reset();document.getElementById("editId").value=id||"";
+  const p=id?getPerson(id):null;
+  document.getElementById("modalTitle").textContent=id?"Редактирование человека":"Новый человек";
+  if(p){
+    firstName.value=p.firstName||"";lastName.value=p.lastName||"";birthDate.value=p.birthDate||"";birthPlace.value=p.birthPlace||"";gender.value=p.gender||"unknown";notes.value=p.notes||"";
+  }
+  fillParents(id);document.getElementById("modalBg").classList.add("open");
+}
+function fillParents(id){
+  parents.innerHTML="";
+  people.filter(p=>p.id!==id).sort((a,b)=>nameOf(a).localeCompare(nameOf(b),"ru")).forEach(p=>{
+    const o=document.createElement("option");o.value=p.id;o.textContent=nameOf(p);if(id&&getPerson(id).parents.includes(p.id))o.selected=true;parents.appendChild(o);
+  });
+}
+function closeModal(){document.getElementById("modalBg").classList.remove("open")}
+async function toDataUrl(file){return new Promise((res,rej)=>{if(!file)return res("");const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(file)})}
+document.getElementById("personForm").addEventListener("submit",async e=>{
+  e.preventDefault();const id=editId.value.trim(), selected=[...parents.selectedOptions].map(o=>o.value);let photo=id?(getPerson(id)?.photo||""):"";if(photo.files)photo="";
+  const file=document.getElementById("photo").files[0];if(file)photo=await toDataUrl(file);
+  if(id){
+    const p=getPerson(id);p.firstName=firstName.value.trim();p.lastName=lastName.value.trim();p.birthDate=birthDate.value.trim();p.birthPlace=birthPlace.value.trim();p.gender=gender.value;p.notes=notes.value.trim();p.photo=photo;
+    connections=connections.filter(c=>!(c.type==="parent"&&c.to===id));selected.forEach(pa=>connections.push({id:uid(),type:"parent",from:pa,to:id,bendX:0,bendY:0}));
+  }else{
+    const nid=uid();people.push({id:nid,firstName:firstName.value.trim(),lastName:lastName.value.trim(),birthDate:birthDate.value.trim(),birthPlace:birthPlace.value.trim(),gender:gender.value,photo,notes:notes.value.trim(),parents:selected,spouses:[]});
+    positions[nid]={x:4000+Math.random()*500,y:3000+Math.random()*400};selected.forEach(pa=>connections.push({id:uid(),type:"parent",from:pa,to:nid,bendX:0,bendY:0}));
+  }
+  syncPeople();saveConnections();savePositions();closeModal();render();
+});
+function deletePerson(id){const p=getPerson(id);if(!p||!confirm(`Удалить ${nameOf(p)} и все его связи?`))return;people=people.filter(x=>x.id!==id);connections=connections.filter(c=>c.from!==id&&c.to!==id);delete positions[id];syncPeople();saveConnections();savePositions();selectedPerson=null;closePanel();render()}
+
+function updateSearch(q){
+  q=(q||"").trim().toLowerCase();
+  const countEl=document.getElementById("searchCount");
+  let matches=0;
+  document.querySelectorAll(".person").forEach(el=>{
+    const p=getPerson(el.dataset.id); if(!p)return;
+    const hay=(nameOf(p)+" "+(p.birthPlace||"")+" "+(p.birthDate||"")).toLowerCase();
+    const match=!!q&&hay.includes(q);
+    el.classList.toggle("search-match",match);
+    el.classList.toggle("search-dim",!!q&&!match);
+    if(match)matches++;
+  });
+  countEl.textContent=q?(matches?`Найдено: ${matches}`:"Ничего не найдено"):"";
+}
+document.getElementById("search").addEventListener("input",function(){updateSearch(this.value)});
+document.getElementById("search").addEventListener("keydown",function(e){
+  if(e.key!=="Enter")return;
+  const q=this.value.trim().toLowerCase();
+  const p=people.find(x=>(nameOf(x)+" "+x.birthPlace+" "+x.birthDate).toLowerCase().includes(q));
+  if(p){selectedPerson=p.id;openPersonPanel(p);centerOn(p.id);renderPeople();updateSearch(this.value)}
+});
+
+
+function toggleExportMenu(e){
+  e.stopPropagation();
+  document.getElementById("exportMenu").classList.toggle("open");
+}
+document.addEventListener("click",e=>{
+  if(!document.getElementById("exportWrap")?.contains(e.target))document.getElementById("exportMenu")?.classList.remove("open");
+});
+function exportBounds(){
+  const items=people.map(p=>positions[p.id]).filter(Boolean);
+  if(!items.length)return {x:0,y:0,w:900,h:600};
+  const xs=[],ys=[]; people.forEach(p=>{const a=positions[p.id];if(a){xs.push(a.x);ys.push(a.y);xs.push(a.x+CARD_W);ys.push(a.y+(cardH[p.id]||CARD_DEF_H));}});
+  const pad=80,x=Math.max(0,Math.min(...xs)-pad),y=Math.max(0,Math.min(...ys)-pad),maxX=Math.max(...xs)+pad,maxY=Math.max(...ys)+pad;
+  return {x,y,w:Math.max(400,maxX-x),h:Math.max(300,maxY-y)};
+}
+async function makeExportCanvas(){
+  if(typeof html2canvas!=="function")throw new Error("Не загрузилась библиотека экспорта изображений. Проверьте интернет-соединение.");
+  const b=exportBounds();
+  const holder=document.createElement("div");
+  holder.style.cssText=`position:fixed;left:-100000px;top:0;width:${Math.ceil(b.w)}px;height:${Math.ceil(b.h)}px;background:#0b1220;overflow:hidden;z-index:-1`;
+  const layer=document.createElement("div");
+  layer.style.cssText=`position:absolute;left:0;top:0;width:${Math.ceil(b.w)}px;height:${Math.ceil(b.h)}px`;
+  const cards=[];
+  people.forEach(p=>{
+    const src=document.querySelector(`.person[data-id="${CSS.escape(p.id)}"]`);if(!src)return;
+    const c=src.cloneNode(true);c.classList.remove("search-match","search-dim","highlight","dragging");
+    const pos=positions[p.id];c.style.left=(pos.x-b.x)+"px";c.style.top=(pos.y-b.y)+"px";c.style.transform="none";c.style.zIndex="10";c.style.opacity="1";
+    cards.push(c);layer.appendChild(c);
+  });
+  const svgClone=svg.cloneNode(true);svgClone.removeAttribute("style");svgClone.setAttribute("viewBox",`${b.x} ${b.y} ${b.w} ${b.h}`);svgClone.style.cssText=`position:absolute;left:0;top:0;width:${b.w}px;height:${b.h}px;overflow:visible`;
+  // Переносим SVG в координаты экспортного полотна.
+  const g=document.createElementNS(SVGNS,"g");
+  while(svgClone.firstChild)g.appendChild(svgClone.firstChild);
+  g.setAttribute("transform",`translate(${-b.x},${-b.y})`);
+  svgClone.appendChild(g);
+  layer.insertBefore(svgClone,layer.firstChild);
+  holder.appendChild(layer);document.body.appendChild(holder);
+  await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+  try{return await html2canvas(holder,{backgroundColor:"#0b1220",scale:Math.min(2,2400/Math.max(b.w,b.h)),useCORS:true,logging:false})}
+  finally{holder.remove()}
+}
+function downloadBlob(blob,name){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)}
+async function exportTree(type){
+  document.getElementById("exportMenu").classList.remove("open");
+  toast("⏳ Формирую файл…");
+  try{
+    const canvas=await makeExportCanvas();
+    const base="rodoslovnaya-knyazevy-"+new Date().toISOString().slice(0,10);
+    if(type==="png")canvas.toBlob(b=>downloadBlob(b,base+".png"),"image/png");
+    else if(type==="jpeg")canvas.toBlob(b=>downloadBlob(b,base+".jpg"),"image/jpeg",.95);
+    else if(type==="tiff"){
+      if(typeof UTIF==="undefined")throw new Error("Не загрузилась библиотека TIFF.");
+      const img=canvas.getContext("2d").getImageData(0,0,canvas.width,canvas.height);
+      const buf=UTIF.encodeImage(img.data,img.width,img.height);downloadBlob(new Blob([buf],{type:"image/tiff"}),base+".tiff");
+    }else if(type==="pdf"){
+      if(!window.jspdf?.jsPDF)throw new Error("Не загрузилась библиотека PDF.");
+      const {jsPDF}=window.jspdf;const landscape=canvas.width>=canvas.height;const pdf=new jsPDF({orientation:landscape?"landscape":"portrait",unit:"mm",format:"a4"});
+      const margin=8,pageW=pdf.internal.pageSize.getWidth()-margin*2,pageH=pdf.internal.pageSize.getHeight()-margin*2;const ratio=Math.min(pageW/canvas.width,pageH/canvas.height);const w=canvas.width*ratio,h=canvas.height*ratio;pdf.addImage(canvas.toDataURL("image/jpeg",.94),"JPEG",(pdf.internal.pageSize.getWidth()-w)/2,(pdf.internal.pageSize.getHeight()-h)/2,w,h);pdf.save(base+".pdf");
+    }
+    toast("✓ Файл готов");
+  }catch(err){console.error(err);alert("Не удалось создать файл: "+err.message)}
+}
+function exportTable(type){
+  document.getElementById("exportMenu").classList.remove("open");
+  const rows=people.map((p,i)=>({"№":i+1,"Имя":p.firstName||"","Фамилия":p.lastName||"","Дата рождения":p.birthDate||"","Место рождения":p.birthPlace||"","Пол":p.gender==="male"?"Мужчина":p.gender==="female"?"Женщина":"Не указан","Родители":(p.parents||[]).map(id=>nameOf(getPerson(id))).join(", "),"Супруг(а)":(p.spouses||[]).map(id=>nameOf(getPerson(id))).join(", "),"Заметки":p.notes||""}));
+  if(type==="csv"){
+    const head=Object.keys(rows[0]||{"Имя":""});const escCsv=v=>`"${String(v??"").replace(/"/g,'""')}"`;const csv="\ufeff"+head.map(escCsv).join(";")+"\n"+rows.map(r=>head.map(k=>escCsv(r[k])).join(";")).join("\\n");downloadBlob(new Blob([csv],{type:"text/csv;charset=utf-8"}),"rodoslovnaya-knyazevy.csv");
+  }else{
+    if(typeof XLSX==="undefined"){alert("Не загрузилась библиотека Excel. Проверьте интернет-соединение.");return}
+    const ws=XLSX.utils.json_to_sheet(rows),wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Родословная");XLSX.writeFile(wb,"rodoslovnaya-knyazevy.xlsx");
+  }
+  toast("✓ Таблица готова");
+}
+
+function closeAllOnEmpty(e){if(panMoved){panMoved=false;return}if(e.target===area){selectedPerson=null;selectedConnection=null;closePanel();renderPeople();renderConnections()}}
+area.addEventListener("click",closeAllOnEmpty);
+
+function toast(msg){
+  const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");
+  clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),2200);
+}
+async function saveAll(){
+  const btn=document.querySelector(".save");
+  try{
+    savePeople();saveConnections();savePositions();
+    if(btn){btn.disabled=true;btn.textContent="⏳ Сохраняю…";}
+    const d=await saveToServer();
+    const savedAt=(d&&d.meta&&d.meta.lastServerSavedAt)||new Date().toISOString();
+    setServerSavedAt(savedAt);
+    serverSnapshot=stateFingerprint();
+    serverLoaded=true;
+    updateSyncStatus();
+    toast("✓ Изменения сохранены на сервер");
+  }catch(err){
+    updateSyncStatus();
+    alert("Не удалось сохранить на сервере: "+err.message+"\n\nЛокальная копия при этом сохранена в браузере.");
+  }finally{
+    if(btn){btn.disabled=false;btn.textContent="💾 Сохранить на сервер";}
+  }
+}
+
+// Сначала показываем локальный черновик, затем обязательно заменяем его серверной базой.
+savePeople();saveConnections();savePositions();
+lastServerSavedAt=localStorage.getItem(LAST_SERVER_SAVE_KEY)||"";
+render();centerTree();updateSyncStatus();
+loadServerData().catch(err=>{
+  syncingServer=false;
+  console.error("Ошибка загрузки серверной базы:",err);
+  updateSyncStatus();
+  alert("Не удалось загрузить актуальную базу с сервера.\n\n"+err.message+"\n\nПоказана локальная копия браузера. Не сохраняйте изменения, пока соединение с сервером не восстановлено.");
+});
+setInterval(updateSyncStatus,3000);
+</script>
+</body>
+</html>
