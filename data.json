@@ -556,8 +556,8 @@
     },
     {
       "id": "taisya",
-      "firstName": "Спиридонова Таисия",
-      "lastName": "Даниловна",
+      "firstName": "Таисия Спиридоновна",
+      "lastName": "Спиридонова",
       "birthDate": "",
       "birthPlace": "Шигали",
       "gender": "female",
@@ -585,8 +585,8 @@
     },
     {
       "id": "svetlana-d",
-      "firstName": "Спиридонова Светлана",
-      "lastName": "Даниловна",
+      "firstName": "Светлана Спиридоновна",
+      "lastName": "Спиридонова",
       "birthDate": "",
       "birthPlace": "Шигали",
       "gender": "female",
@@ -1920,42 +1920,10 @@
       "bendY": 0
     },
     {
-      "id": "parent_spiridon_taisya",
-      "type": "parent",
-      "from": "spiridon",
-      "to": "taisya",
-      "bendX": 0,
-      "bendY": 0
-    },
-    {
-      "id": "parent_matrena_taisya",
-      "type": "parent",
-      "from": "matrena",
-      "to": "taisya",
-      "bendX": 0,
-      "bendY": 0
-    },
-    {
       "id": "parent_taisya_sergey-i",
       "type": "parent",
       "from": "taisya",
       "to": "sergey-i",
-      "bendX": 0,
-      "bendY": 0
-    },
-    {
-      "id": "parent_spiridon_svetlana-d",
-      "type": "parent",
-      "from": "spiridon",
-      "to": "svetlana-d",
-      "bendX": 0,
-      "bendY": 0
-    },
-    {
-      "id": "parent_matrena_svetlana-d",
-      "type": "parent",
-      "from": "matrena",
-      "to": "svetlana-d",
       "bendX": 0,
       "bendY": 0
     },
@@ -2998,6 +2966,38 @@
       "to": "id_1790271338188_093ffb01fab5b",
       "bendX": 0,
       "bendY": 0
+    },
+    {
+      "id": "id_1790272184186_4ab6d9bfe08c4",
+      "type": "parent",
+      "from": "spiridon",
+      "to": "svetlana-d",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "id_1790272184186_4c64edd4e851a",
+      "type": "parent",
+      "from": "matrena",
+      "to": "svetlana-d",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "id_1790272194166_e1bd96d3a950d",
+      "type": "parent",
+      "from": "spiridon",
+      "to": "taisya",
+      "bendX": 0,
+      "bendY": 0
+    },
+    {
+      "id": "id_1790272194166_5fe518fbd67c98",
+      "type": "parent",
+      "from": "matrena",
+      "to": "taisya",
+      "bendX": 0,
+      "bendY": 0
     }
   ],
   "positions": {
@@ -3026,16 +3026,16 @@
       "y": 1671.911925919203
     },
     "anatoly": {
-      "x": 3117.2636492109204,
-      "y": 2653.781974897332
+      "x": 3275.894917755081,
+      "y": 2660.447154247927
     },
     "magdalina": {
-      "x": 2909.5006960949113,
-      "y": 2816.073921319301
+      "x": 2968.154274380147,
+      "y": 2793.4123115272782
     },
     "vladimir-s": {
-      "x": 3172.457372982172,
-      "y": 2891.3068896170666
+      "x": 3276.434170851454,
+      "y": 2901.9711765780185
     },
     "oksana": {
       "x": 3513.306007803331,
@@ -3146,16 +3146,16 @@
       "y": 2645.185998144006
     },
     "taisya": {
-      "x": 2451.990040914054,
-      "y": 2827.040252281656
+      "x": 2490.6480811475053,
+      "y": 2815.0429294505852
     },
     "sergey-i": {
       "x": 3170.2938893924575,
       "y": 2374.870667082201
     },
     "svetlana-d": {
-      "x": 2682.07237540183,
-      "y": 2821.9623088102853
+      "x": 2719.397379765162,
+      "y": 2816.630165329809
     },
     "galya": {
       "x": 2704.1182012618992,
