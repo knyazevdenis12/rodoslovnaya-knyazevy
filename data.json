@@ -724,7 +724,7 @@
     {
       "id": "lida-s",
       "firstName": "Лида",
-      "lastName": "Нуриахметовна Сафина",
+      "lastName": "Сафина",
       "birthDate": "",
       "birthPlace": "",
       "gender": "female",
@@ -734,12 +734,15 @@
         "svetlana-d",
         "nuria"
       ],
-      "spouses": []
+      "spouses": [],
+      "patronymic": "Нуриахметовна",
+      "maidenName": "",
+      "deathDate": ""
     },
     {
       "id": "vera-s",
       "firstName": "Вера",
-      "lastName": "Нуриахметовна Сафина",
+      "lastName": "Сафина",
       "birthDate": "",
       "birthPlace": "",
       "gender": "female",
@@ -749,7 +752,10 @@
         "svetlana-d",
         "nuria"
       ],
-      "spouses": []
+      "spouses": [],
+      "patronymic": "Нуриахметовна",
+      "maidenName": "",
+      "deathDate": ""
     },
     {
       "id": "yuri-s",
@@ -4334,6 +4340,21 @@
   },
   "history": [
     {
+      "id": "id_1790318675411_29f2fd1a8394",
+      "time": "2026-09-25T06:44:35.411Z",
+      "action": "Изменён человек"
+    },
+    {
+      "id": "id_1790318665156_38868bc416c88",
+      "time": "2026-09-25T06:44:25.156Z",
+      "action": "Изменён человек"
+    },
+    {
+      "id": "id_1790318659977_e5c7199f870058",
+      "time": "2026-09-25T06:44:19.977Z",
+      "action": "Изменён человек"
+    },
+    {
       "id": "id_1790318642076_7b54005b9cc758",
       "time": "2026-09-25T06:44:02.076Z",
       "action": "Изменён человек"
@@ -4784,5 +4805,5 @@
       "action": "Изменён человек"
     }
   ],
-  "lastSavedAt": "2026-09-25T06:44:05.190Z"
+  "lastSavedAt": "2026-09-25T06:49:20.533Z"
 }
